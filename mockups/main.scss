@@ -1,0 +1,33 @@
+$ppp: red;
+* {
+    box-sizing: border-box;
+
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+}
+
+
+// GLOBAL CLASSES
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.visuallyhidden {
+    display: none;
+    border: 0;
+    clip: rect(0 0 0 0);
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
+}
