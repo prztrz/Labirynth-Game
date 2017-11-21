@@ -19,17 +19,22 @@ document.addEventListener('DOMContentLoaded', function(){
 
         }
 
-        // componentDidMount() {
-        //     this.buildTile();
-        // }
-
-        componentWillReceiveProps(ppp) {
+        componentDidMount() {
             this.buildTile();
-            cosole.log(ppp)
+        }
+
+        componentWillReceiveProps() {
+            console.log('willrecieve props:')
+            this.setState({
+                rotation: this.props.rotation
+            }, this.buildTile());
+            //this.buildTile();
+           // console.log('ROTATION in STATE', this.state.rotation)
         }
 
         buildTile() {
-            const rows = this.state.grid.slice();
+            console.log('BUILD TILE: STATE.ROTATION')
+            const rows = [[],[],[]];
             switch (this.state.shape) {
                 case "turn":{
                     switch (this.state.rotation){
@@ -151,7 +156,6 @@ document.addEventListener('DOMContentLoaded', function(){
                 grid.push(mappedRow);
             })
             
-            console.log('GRID',grid);
             switch (this.state.shape) {
                 case "straight":
 
@@ -201,8 +205,32 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     }
 
+    class App extends React.Component {
+        constructor(props){
+            super(props);
+            this.state = {
+                rot: 0
+            }
+        }
+
+        componentDidMount() {
+            this.interval = setInterval(() => {
+                if (this.state.rot === 4) {
+                    clearInterval(this.interval)
+                }
+                this.setState({rot: this.state.rot + 1})
+            },2000)
+        }
+        render(){
+            console.log('rotation', this.state.rot)
+            return(
+                <Tile shape="tShape" rotation={this.state.rot} />
+            );
+        }
+    }
+
     ReactDOM.render(
-        <Tile shape="tShape" rotation={3}/>,
+        <App />,
         document.getElementById('app')
     );
 });
