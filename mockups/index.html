@@ -5,9 +5,566 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&amp;subset=latin-ext" rel="stylesheet">
     <title>Labirynth Game</title>
 </head>
 <body>
+    <!-- HEADER -->
+    <header class="page-header">
+        <div class="container">
+            <div class="title">
+                <h1>Labirynth</h1>
+            </div>
+        </div>
+    </header>
+
+    <section class="section-game">
+        <div class="container clearfix">
+            <div class="game-panel">
+                <div class="row clearfix" data-order="1">
+
+                <span class="down-arrow col-2">
+                    <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+                </span>
+                <span class="down-arrow col-4">
+                    <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+                </span>
+
+                <span class="down-arrow col-6">
+                    <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+                </span>
+
+                    <div class="game-tile clearfix" data-order="1">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid brick" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid brick" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"><span class="player player-one"></span></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="2">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid brick" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid way" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="3">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid brick" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid way" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid brick" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="4">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid brick" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid way" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="5">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid brick" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid way" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="6">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid brick" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid brick" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="7">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid way" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid way" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+                </div><!--end of row -->
+
+                <div class="row clearfix" data-order="2">
+                    <span class="right-arrow">
+                        <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                    </span>
+
+                    <span class="left-arrow">
+                        <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                    </span>
+
+                    <div class="game-tile clearfix" data-order="1">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid brick" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid way" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="2">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid way" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid brick" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="3">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid brick" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid brick" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="4">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid brick" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid way" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="5">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid way" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid brick" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+            
+                    <div class="game-tile clearfix" data-order="6">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid way" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid way" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order=="7">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid brick" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid way" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+                </div><!--end of row -->
+
+                <div class="row clearfix" data-order="3">
+                    <div class="game-tile clearfix" data-order="1">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid way" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid way" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="2">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid brick" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid brick" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="3">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid way" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid way" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="4">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid brick" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid way" data-order="4"><div class="treasure"></div></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="5">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid way" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid brick" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="6">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid way" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid way" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="7">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid way" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid way" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+                </div><!--end of row -->
+
+                <div class="row clearfix" data-order="4">
+                    <span class="right-arrow">
+                        <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                    </span>
+
+                    <span class="left-arrow">
+                        <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                    </span>
+
+                    <div class="game-tile clearfix" data-order="1">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid brick" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid way" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="2">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid brick" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid brick" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+                
+                    <div class="game-tile clearfix" data-order="3">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid way" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid way" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="4">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid brick" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid way" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="5">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid way" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid way" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid brick" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="6">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid way" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid way" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="7">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid way" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid brick" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+                </div>
+                <div class="row clearfix" data-order="5">
+
+                <span class="up-arrow col-2">
+                    <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+                </span>
+                <span class="up-arrow col-4">
+                    <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+                </span>
+
+                <span class="up-arrow col-6">
+                    <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+                </span>
+
+                    <div class="game-tile clearfix" data-order="1">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid way" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid brick" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="2">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid brick" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid way" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="3">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid way" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid brick" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="4">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid brick" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid brick" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="5">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid way" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid brick" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="6">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid way" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid way" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+
+                    <div class="game-tile clearfix" data-order="7">
+                        <div class="game-grid brick" data-order="1"></div>
+                        <div class="game-grid way" data-order="2"></div>
+                        <div class="game-grid brick" data-order="3"></div>
+                        <div class="game-grid brick" data-order="4"></div>
+                        <div class="game-grid way" data-order="5"></div>
+                        <div class="game-grid way" data-order="6"></div>
+                        <div class="game-grid brick" data-order="7"></div>
+                        <div class="game-grid way" data-order="8"></div>
+                        <div class="game-grid brick" data-order="9"></div>
+                    </div>
+                </div>
+        
+           
+            </div> <!-- end of game-panel -->
+
+        
+        </div>
+    </section>
+    <!-- end of section-game -->
+
+    <section class="section-player-panel">
+        <div class="container">
+            <div class="player-pad">
+                <div class="pad-body">
+                    <div class="pad-panel-rotator">
+                        <div class="panel-rotator-info">Player 1</div>
+                        <div class="rotator">
+                            <div>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div>
+                                <span></span>                            
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pad-panel-tile">
+                        <div class="tile-panel-info">
+                            Rotate tile and drag it on arrow
+                        </div>
+
+                        <div class="pad-tile">
+                            <div class="game-tile clearfix" data-order="5">
+                                <div class="game-grid brick" data-order="1"></div>
+                                <div class="game-grid way" data-order="2"></div>
+                                <div class="game-grid brick" data-order="3"></div>
+                                <div class="game-grid brick" data-order="4"></div>
+                                <div class="game-grid way" data-order="5"></div>
+                                <div class="game-grid way" data-order="6"></div>
+                                <div class="game-grid brick" data-order="7"></div>
+                                <div class="game-grid way" data-order="8"></div>
+                                <div class="game-grid brick" data-order="9"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pad-panel-card">
+                        <div class="panel-card-info">Next treasure</div>
+                        <div class="pad-card">
+                            <div class="card-treasure">
+                                <!-- <img src='img/mushroom.png'> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pad-panel-options">
+                        <div class="points">Treasures: 1/4</div>
+
+                        <div class="pad-buttons">
+                            <div class="btn"><span></span> Options</div>
+                            <div class="btn"><span></span> Reset</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- font awesome -->
+    <script src="https://use.fontawesome.com/6d3c3b735c.js"></script>
     
 </body>
 </html>
