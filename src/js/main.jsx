@@ -65,23 +65,62 @@ document.addEventListener('DOMContentLoaded', function(){
             let nextPlayerPos = {leftBound: currPlayerPos.leftBound-5, rightBound: currPlayerPos.rightBound + 5, topBound: currPlayerPos.topBound-5, bottomBound: currPlayerPos.bottomBound+5}
   
 
-            // console.log(this.findTile(currPlayerPos.leftBound, currPlayerPos.rightBound, currPlayerPos.topBound, currPlayerPos.bottomBound))
-
             let currentTile = this.findTile(currPlayerPos.leftBound, currPlayerPos.rightBound, currPlayerPos.topBound, currPlayerPos.bottomBound);
-          
-            let currentMap = this.obstacleMap[currentTile];
-            console.log(currentMap.upperMiddleObstacle)
+            let currentMap;
+            let mapOnRight;
+            let mapOnLeft;
+            let mapOnDown;
+            let mapOnUp;
+            console.log(currentTile)
+            
+            if(typeof currentTile === 'number'){
+                currentMap = this.obstacleMap[currentTile];
+                mapOnRight = this.obstacleMap[currentTile+1];
+                mapOnLeft = this.obstacleMap[currentTile-1];
+                mapOnDown = this.obstacleMap[currentTile+7]
+                mapOnUp = this.obstacleMap[currentTile-7]
+            }
+            
 
 
             switch (key) {
                 case 'ArrowUp':{
-                    //nextPlayerPos = currPlayerPos.topBound - 5;
-                    if (typeof currentTile === 'number') {
-                        if (currentMap.upperMiddleObstacle.bottomBound > nextPlayerPos.topBound && currentMap.upperMiddleObstacle.leftBound < currPlayerPos.rightBound) {
-                            console.log('Działa, bottomBonObst:',currentMap.upperMiddleObstacle.bottomBound, ' nexttopBondPlayer: ',nextPlayerPos.topBound,' leftbondObst: ', currentMap.upperMiddleObstacle.leftBound, ' rightBondPlayer:', currPlayerPos.rightBound  )
-                        } else {
-                            console.log('nie działa, bottomBonObst:',currentMap.upperMiddleObstacle.bottomBound, ' nexttopBondPlayer: ',nextPlayerPos.topBound,' leftbondObst: ', currentMap.upperMiddleObstacle.leftBound, ' rightBondPlayer:', currPlayerPos.rightBound  )
+                    if (typeof currentTile === 'number' && currentMap.upperMiddleObstacle !== null) {
+                        if (currentMap.upperMiddleObstacle.bottomBound > nextPlayerPos.topBound && 
+                            ((currPlayerPos.rightBound > currentMap.upperMiddleObstacle.leftBound && currPlayerPos.rightBound < currentMap.upperMiddleObstacle.rightBound) || (currPlayerPos.leftBound > currentMap.upperMiddleObstacle.leftBound && currPlayerPos.leftBound < currentMap.upperMiddleObstacle.rightBound))) {
+
+                 
+                            console.log('KOALIZJA MIDDLE')
+                            
+                        } 
+                    }
+
+                    if (typeof currentTile === 'number' && currentMap.upperLeftObstacle !== null) {
+                        if (currentMap.upperLeftObstacle.bottomBound > nextPlayerPos.topBound && 
+                            ((currPlayerPos.rightBound > currentMap.upperLeftObstacle.leftBound && currPlayerPos.rightBound < currentMap.upperLeftObstacle.rightBound) || (currPlayerPos.leftBound > currentMap.upperLeftObstacle.leftBound && currPlayerPos.leftBound < currentMap.upperLeftObstacle.rightBound))) {
+
+                 
+                            console.log('KOLIZJA LEFT')
+                            
                         }
+                    }
+
+                    if (typeof currentTile === 'number' && currentMap.upperLeftObstacle !== null) {
+                        if (currentMap.upperRightObstacle.bottomBound > nextPlayerPos.topBound && 
+                            ((currPlayerPos.rightBound > currentMap.upperRightObstacle.leftBound && currPlayerPos.rightBound < currentMap.upperRightObstacle.rightBound) || (currPlayerPos.leftBound > currentMap.upperRightObstacle.leftBound && currPlayerPos.leftBound < currentMap.upperRightObstacle.rightBound))) {
+                            
+                            console.log('KOLIZJA RIGHT')
+                        } 
+                    }
+
+                    if (typeof currentTile === 'number' && currentTile - 7 >= 0 && mapOnUp.lowerMiddleObstacle !== null) {
+                        if (mapOnUp.lowerMiddleObstacle.bottomBound > nextPlayerPos.topBound -5 && 
+                            ((currPlayerPos.rightBound > mapOnUp.lowerMiddleObstacle.leftBound && currPlayerPos.rightBound < mapOnUp.lowerMiddleObstacle.rightBound) || (currPlayerPos.leftBound > mapOnUp.lowerMiddleObstacle.leftBound && currPlayerPos.leftBound < mapOnUp.lowerMiddleObstacle.rightBound))) {
+
+                 
+                            console.log('HALT')
+                            
+                        } 
                     }
                 }
 
@@ -89,19 +128,127 @@ document.addEventListener('DOMContentLoaded', function(){
 
                 case 'ArrowDown': 
                     //nextPlayerPos = currPlayerPos.bottomBound + 5;
+                    if (typeof currentTile === 'number' && currentMap.lowerMiddleObstacle !== null) {
+                        if (currentMap.lowerMiddleObstacle.topBound < nextPlayerPos.bottomBound && 
+                            ((currPlayerPos.rightBound > currentMap.lowerMiddleObstacle.leftBound && currPlayerPos.rightBound < currentMap.lowerMiddleObstacle.rightBound) || (currPlayerPos.leftBound > currentMap.lowerMiddleObstacle.leftBound && currPlayerPos.leftBound < currentMap.lowerMiddleObstacle.rightBound))) {
+
+                            
+                            console.log('KOALIZJA MIDDLE')
+                            
+                        } 
+                    }
+
+                    if (typeof currentTile === 'number' && currentMap.lowerLeftObstacle !== null) {
+                        if (currentMap.lowerLeftObstacle.topBound < nextPlayerPos.bottomBound && 
+                            ((currPlayerPos.rightBound > currentMap.lowerLeftObstacle.leftBound && currPlayerPos.rightBound < currentMap.lowerLeftObstacle.rightBound) || (currPlayerPos.leftBound > currentMap.lowerLeftObstacle.leftBound && currPlayerPos.leftBound < currentMap.lowerLeftObstacle.rightBound))) {
+
+                 
+                            console.log('KOLIZJA LEFT')
+                            
+                        }
+                    }
+
+                    if (typeof currentTile === 'number' && currentMap.lowerLeftObstacle !== null) {
+                        if (currentMap.lowerRightObstacle.topBound < nextPlayerPos.bottomBound && 
+                            ((currPlayerPos.rightBound > currentMap.lowerRightObstacle.leftBound && currPlayerPos.rightBound < currentMap.lowerRightObstacle.rightBound) || (currPlayerPos.leftBound > currentMap.lowerRightObstacle.leftBound && currPlayerPos.leftBound < currentMap.lowerRightObstacle.rightBound))) {
+                            
+                            console.log('KOLIZJA RIGHT')
+                        } 
+                    }
+
+                    if (typeof currentTile === 'number' && currentTile+7 <= 27 && mapOnDown.upperMiddleObstacle !==null) {
+                        if (mapOnDown.upperMiddleObstacle.topBound < nextPlayerPos.bottomBound && 
+                            ((currPlayerPos.rightBound > mapOnDown.upperMiddleObstacle.leftBound && currPlayerPos.rightBound < mapOnDown.upperMiddleObstacle.rightBound) || (currPlayerPos.leftBound > mapOnDown.upperMiddleObstacle.leftBound && currPlayerPos.leftBound < mapOnDown.upperMiddleObstacle.rightBound))) {
+
+                            
+                            console.log('HALT')
+                        }
+                          
+                    }
                 break;
 
                 case 'ArrowLeft':
                     //nextPlayerPos = currPlayerPos.leftBound - 5;
+                    if (typeof currentTile === 'number' && currentMap.middleLeftObstacle !== null) {
+                        if (currentMap.middleLeftObstacle.rightBound > nextPlayerPos.leftBound && ((currPlayerPos > currentMap.middleLeftObstacle.topBound && currPlayerPos.topBound < currentMap.middleLeftObstacle.bottomBound) || (currPlayerPos.bottomBound > currentMap.middleLeftObstacle.topBound && currPlayerPos.topBound < currentMap.middleLeftObstacle.bottomBound))) {
+
+                            
+                            console.log('KOALIZJA MIDDLE')
+                            
+                        } 
+                    }
+
+                    if (typeof currentTile === 'number' && currentMap.upperLeftObstacle !== null) {
+                        if (currentMap.upperLeftObstacle.rightBound > nextPlayerPos.leftBound && ((currPlayerPos > currentMap.upperLeftObstacle.topBound && currPlayerPos.topBound < currentMap.upperLeftObstacle.bottomBound) || (currPlayerPos.bottomBound > currentMap.upperLeftObstacle.topBound && currPlayerPos.topBound < currentMap.upperLeftObstacle.bottomBound))) {
+
+                            
+                            console.log('KOALIZJA UPPER')
+                            
+                        } 
+                    }
+
+                    if (typeof currentTile === 'number' && currentMap.lowerLeftObstacle !== null) {
+                        if (currentMap.lowerLeftObstacle.rightBound > nextPlayerPos.leftBound && ((currPlayerPos > currentMap.lowerLeftObstacle.topBound && currPlayerPos.topBound < currentMap.lowerLeftObstacle.bottomBound) || (currPlayerPos.bottomBound > currentMap.lowerLeftObstacle.topBound && currPlayerPos.topBound < currentMap.lowerLeftObstacle.bottomBound))) {
+
+                            
+                            console.log('KOALIZJA lower')
+                            
+                        } 
+                    }
+
+                    //możliwość przejśca na inny kafelek z prawej strony
+                    if (typeof currentTile === 'number' && (currentTile-1)%7 !== 0 && currentTile-1 >= 0 && mapOnLeft.middleRightObstacle !== null) {
+             
+                        if (mapOnLeft.middleRightObstacle.rightBound > nextPlayerPos.leftBound - 10 && ((currPlayerPos > mapOnLeft.middleRightObstacle.topBound && currPlayerPos.topBound < mapOnLeft.middleRightObstacle.bottomBound) || (currPlayerPos.bottomBound > mapOnLeft.middleRightObstacle.topBound && currPlayerPos.topBound < mapOnLeft.middleRightObstacle.bottomBound))) {
+                           
+                        } 
+                    }
                 break;
 
                 case 'ArrowRight':
                     //nextPlayerPos = currPlayerPos.rightBound + 5;
+                    if (typeof currentTile === 'number' && currentMap.middleRightObstacle !== null) {
+                        if (currentMap.middleRightObstacle.leftBound < nextPlayerPos.rightBound && ((currPlayerPos > currentMap.middleRightObstacle.topBound && currPlayerPos.topBound < currentMap.middleRightObstacle.bottomBound) || (currPlayerPos.bottomBound > currentMap.middleRightObstacle.topBound && currPlayerPos.topBound < currentMap.middleRightObstacle.bottomBound))) {
+
+                            
+                            console.log('KOALIZJA MIDDLE')
+                            
+                        } 
+                    }
+
+                    if (typeof currentTile === 'number' && currentMap.upperRightObstacle !== null) {
+                        if (currentMap.upperRightObstacle.leftBound < nextPlayerPos.rightBound && ((currPlayerPos > currentMap.upperRightObstacle.topBound && currPlayerPos.topBound < currentMap.upperRightObstacle.bottomBound) || (currPlayerPos.bottomBound > currentMap.upperRightObstacle.topBound && currPlayerPos.topBound < currentMap.upperRightObstacle.bottomBound))) {
+
+                            
+                            console.log('KOALIZJA UPPER')
+                        } 
+                    }
+
+                    if (typeof currentTile === 'number' && currentMap.lowerRightObstacle !== null) {
+                        if (currentMap.lowerRightObstacle.leftBound < nextPlayerPos.rightBound && ((currPlayerPos > currentMap.lowerRightObstacle.topBound && currPlayerPos.topBound < currentMap.lowerRightObstacle.bottomBound) || (currPlayerPos.bottomBound > currentMap.lowerRightObstacle.topBound && currPlayerPos.topBound < currentMap.lowerRightObstacle.bottomBound))) {
+
+                            
+                            console.log('KOALIZJA lower')
+                            
+                        } 
+                    }
+
+                    //możliwośc przejścia na nastepny kafele z lewej strony
+                    if (typeof currentTile === 'number' && (currentTile + 1)%6 !== 0 && currentTile+1 <= 34 && mapOnRight.middleLeftObstacle !== null) {
+                        if (mapOnRight.middleLeftObstacle.leftBound < nextPlayerPos.rightBound && ((currPlayerPos > mapOnRight.middleLeftObstacle.topBound && currPlayerPos.topBound < mapOnRight.middleLeftObstacle.bottomBound) || (currPlayerPos.bottomBound > mapOnRight.middleLeftObstacle.topBound && currPlayerPos.topBound < mapOnRight.middleLeftObstacle.bottomBound))) {
+                            
+                                                        
+                            console.log('HALT')
+                            
+                        } 
+                    }
                 break;
             }
 
 
         }
+
+       
 
         //sprawdza na którym tileu znajduje się obecnie player
         findTile(leftBound, rightBound, topBound, bottomBound) {
@@ -174,102 +321,133 @@ document.addEventListener('DOMContentLoaded', function(){
 
         locateObstacles = (tileIndex, tilePos, grid) => {
             let tile = {index: tileIndex}
-            
-            let tileLeftBound = tilePos.x
-            let tileRightBound = tilePos.x + tilePos.width;
-            let tileTopBound = tilePos.y
-            let tileBottomBound = tilePos.y + tilePos.height;
+            let upperLeftObstacle = null;
+            let upperMiddleObstacle = null;
+            let upperRightObstacle = null;
+            let middleLeftObstacle = null;
+            let middleRightObstacle = null;
+            let lowerLeftObstacle = null;
+            let lowerMiddleObstacle = null;
+            let lowerRightObstacle = null;
 
-            tile.upperLeftObstacle = {
-                leftBound: tileLeftBound + 1,
-                rightBound: tileLeftBound + 60-1,
-                topBound: tileTopBound + 1,
-                bottomBound: tileTopBound + 60-1
+            let multiplier;
+            let horizontalMultiplier;
+            
+            
+            if (tileIndex >= 0 && tileIndex < 7) {
+                multiplier = 0
+                horizontalMultiplier = tileIndex
             }
-            tile.upperRightObstacle = {
-                leftBound: tileLeftBound + 121,
-                rightBound: tileRightBound-1,
-                topBound: tileTopBound+1,
-                bottomBound: tileTopBound+60-1
+
+            if (tileIndex >= 7 && tileIndex < 14) {
+                multiplier = 1
+                horizontalMultiplier = tileIndex - 7
+
             }
-            tile.lowerLeftObstacle = {
-                leftBound: tileLeftBound + 1,
-                rightBound: tileLeftBound + 60-1,
-                topBound: tileBottomBound - 60 + 1,
-                bottomBound: tileBottomBound -1
+
+            if (tileIndex >= 14 && tileIndex < 21) {
+                multiplier = 2
+                horizontalMultiplier = tileIndex - 14
             }
-            tile.lowerRightObstacle = {
-                leftBound: tileLeftBound + 121,
-                rightBound: tileRightBound-1,
-                topBound: tileBottomBound - 60 + 1,
-                bottomBound: tileBottomBound -1
+
+            if (tileIndex >= 21 && tileIndex < 28) {
+                multiplier = 3
+                horizontalMultiplier = tileIndex - 21
             }
-    
-            if (grid[0][1] === 0) {
-                tile.upperMiddleObstacle = {
-                    leftBound: tileLeftBound + 60 + 1,
-                    rightBound: tileLeftBound + 120,
-                    topBound: tileTopBound+1,
-                    bottomBound: tileTopBound+60-1
-                }
-            } else {
-                tile.upperMiddleObstacle = {
-                    leftBound: 0,
-                    rightBound: 0,
-                    topBound: 0,
-                    bottomBound: 0
-                }
+
+            if (tileIndex >= 28 && tileIndex < 35) {
+                multiplier = 4
+                horizontalMultiplier = tileIndex-28;
             }
-    
-            if (grid[1][0] === 0) {
-                tile.middleLeftObstacle = {
-                    leftBound: tileLeftBound + 60 + 1,
-                    rightBound: tileLeftBound + 120,
-                    topBound: tileTopBound+1+60,
-                    bottomBound: tileTopBound+120
-    
-                }
-            } else {
-                tile.middleLeftObstacle = {
-                    leftBound: 0,
-                    rightBound: 0,
-                    topBound: 0,
-                    bottomBound: 0
-                }
+
+            upperLeftObstacle = {
+                topBound:  1 + 180*multiplier,
+                bottomBound: 60 + 180*multiplier,
+                leftBound: 1 + 180*horizontalMultiplier,
+                rightBound: 60 + 180*horizontalMultiplier
             }
-    
-            if (grid[1][2]===0) {
-                this.middleRightObstacle = {
-                    leftBound: tileLeftBound + 121,
-                    rightBound: tileRightBound-1,
-                    topBound: tileTopBound+1+60,
-                    bottomBound: tileTopBound+120
-                }
-            } else {
-                tile.middleRightObstacle = {
-                    leftBound: 0,
-                    rightBound: 0,
-                    topBound: 0,
-                    bottomBound: 0
-                }
+
+            upperRightObstacle = {
+                topBound:  1 + 180*multiplier,
+                bottomBound: 60 + 180*multiplier,
+                leftBound: 121 + 180*horizontalMultiplier,
+                rightBound: 180+ 180*horizontalMultiplier
             }
-    
-            if (grid[2][1]===0) {
-                this.lowerMiddleObstacle = {
-                    leftBound: tileLeftBound + 60 + 1,
-                    rightBound: tileLeftBound + 120,
-                    topBound: tile.ottomBound - 60 + 1,
-                    bottomBound: tile.ottomBound -1,
-    
-                }
-            } else {
-                tile.lowerMiddleObstacle = {
-                    leftBound: 0,
-                    rightBound: 0,
-                    topBound: 0,
-                    bottomBound: 0
-                }
+
+            lowerLeftObstacle = {
+                topBound: 121 + 180*multiplier,
+                bottomBound: 180 + 180*multiplier,
+                leftBound: 1 + 180*horizontalMultiplier,
+                rightBound: 60 + 180*horizontalMultiplier
             }
+
+            lowerRightObstacle = {
+                topBound: 121 + 180*multiplier,
+                bottomBound: 180 + 180*multiplier,
+                leftBound: 121 + 180*horizontalMultiplier,
+                rightBound: 180+ 180*horizontalMultiplier
+            }
+
+            grid[0].forEach((el, i) => {
+                if (el === 0) {
+                    if (i === 1) {
+                        upperMiddleObstacle = {
+                            topBound:  1 + 180*multiplier,
+                            bottomBound: 60 + 180*multiplier,
+                            leftBound: 61 + 180*horizontalMultiplier,
+                            rightBound: 120 + 180*horizontalMultiplier
+                        }
+                    }
+                }
+            });
+
+            grid[1].forEach((el,i) => {
+                if (el === 0) {
+                    switch (i) {
+                        case 0: {
+                            middleLeftObstacle = {
+                                topBound: 61 + 180*multiplier,
+                                bottomBound: 120 + 180*multiplier,
+                                leftBound: 1 + 180*horizontalMultiplier,
+                                rightBound: 60 + 180*horizontalMultiplier
+                            }
+                        }
+                        break;
+
+                        case 2:{
+                            middleRightObstacle = {
+                                topBound: 61 + 180*multiplier,
+                                bottomBound: 120 + 180*multiplier,
+                                leftBound: 121 + 180*horizontalMultiplier,
+                                rightBound: 180 + 180*horizontalMultiplier
+                            }
+                        }
+                        break;
+                    }
+                }
+            });
+
+            grid[2].forEach((el, i) => {
+                if (el === 0) {
+                    if (i === 1) {
+                        lowerMiddleObstacle = {
+                            topBound:  121 + 180*multiplier,
+                            bottomBound: 180 + 180*multiplier,
+                            leftBound: 61 + 180*horizontalMultiplier,
+                            rightBound: 120 + 180*horizontalMultiplier
+                        }
+                    }
+                }
+            })
+            
+            tile.upperLeftObstacle = upperLeftObstacle;
+            tile.upperMiddleObstacle = upperMiddleObstacle;
+            tile.upperRightObstacle = upperRightObstacle;
+            tile.middleLeftObstacle = middleLeftObstacle;
+            tile.middleRightObstacle = middleRightObstacle;
+            tile.lowerLeftObstacle = lowerLeftObstacle;
+            tile.lowerMiddleObstacle = lowerMiddleObstacle;
+            tile.lowerRightObstacle = lowerRightObstacle;
 
             this.createObstacleMap(tile);
             
