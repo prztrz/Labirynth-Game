@@ -10,6 +10,12 @@ $active-arrow-color: #28450f;
 
 
 // GLOBAL CLASSES
+
+.col-1-3 {
+    float: left;
+    width: 33%;
+    min-height: 1px
+}
 .clearfix:after {
     content: "";
     display: table;
@@ -71,18 +77,11 @@ body {
 
 .section-game {
     background-color: $main-background;
-    height: 1200px;
 
-    .container {
-        height: 1000px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 
     .game-panel {
         
-        margin-top: 200px;
+        padding-top: 210px;
         height: 100%;
     }
 
@@ -188,179 +187,201 @@ body {
             }
         }
     }
-}
 
-.section-player-panel {
-    background-color: $main-background;
-    min-height: 300px;
-
-    .player-pad {
-        position: fixed;
-        bottom: 0;
-        left: 12.5%;
-        width: 75%;
-        height: 320px;
-        background-color: #d4d4d4;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .pad-body {
-        background-color: #1a1a1a;
-        height: 90%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 95%;
-        margin-top: 10px;
-    }
-
-    .pad-panel-rotator {
-        display: flex;
-        align-items: flex-start;
-        flex-direction: column;
-        width: 25%;
-
-        .panel-rotator-info {
-            color: #ddd;
-            text-align: center;
-            margin-bottom: 54px;
-            width: 75%;
-        }
-
-        .rotator {
-            display: flex;
-            justify-content: center;
-            width: 75%;
-
-            
-
-            div:nth-child(2n+1) {
-                span:nth-child(2n) {
-                background-color: #000;
-                }
-            }
-
-            div:nth-child(2n) {
-                span{
-                background-color: #000;
-                }
-            }
-            span {
-                display: block;
-                width:60px;
-                height: 60px;
-                background-color: #1a1a1a;
-            
-            }
-        }
-
-    }
-
-    .pad-panel-tile {
-        display: flex;
-        align-items: flex-start;
-        justify-items: center;
-        flex-direction: column;
-        width: 25%;
-
-        .tile-panel-info {
-            color: #ddd;
-            text-align: center;
-            margin-bottom: 30px;
-            width: 180px;
-        }
-
-        .pad-tile {
-            width: 180px;
-            height: 180px;
-
-             .game-grid{
-            float:left;
-            height: 60px;
-            width: 60px;
-            //border: 1px solid black;
-
-            &.brick {
-                //background-image: url('../img/world.png');
-                background-position: 99.7% 50.2%; 
-            }
-
-            &.way {
-                //background-image: url('../img/dirt1.png');
-                background-size: cover;
-            }
-        }
-    }
-}
-
-    .pad-panel-card {
-        display:flex;
-        align-items: flex-start;
-        flex-direction: column;
-        width:25%;
-
-        .panel-card-info{
-            color: #ddd;
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .pad-card {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid $secondary-background;
-            background-color: $main-background;
-            border-radius: 5px;
-            height: 180px;
-            width: 50%;
-
-            .card-treasure {
-                border: 1px solid black;
-                background-image: url(../img/mushroom.png);
-                background-size: cover;
-                background-color: #d08a63;
-                height: 125px;
-                width: 125px;
-                border-radius: 50%;
-                text-align: center;
-            }
-
-        }
-    }
-
-    .pad-panel-options {
-        display: flex;
-        justify-content: space-between ;
-        align-items: flex-start;
-        flex-direction: column;
-        width: 20%;
-        height: 84%;
+    .player-panel {
+        background-color: $main-background;
+        margin-bottom: 200px;
+        margin-top: 250px;
         
 
-        .points {
-            color: #ddd;
-          
+        .player-pad {
+            width: 100%;
+            height: 370px;
+            background-color: #d4d4d4;
+            padding: 10px 35px;
         }
-
-        .pad-buttons{
-            .btn {
-                color: #ee201a;
-                margin-bottom: 10px;
-              
-
-                span{
-                    display: inline-block;
-                    border-radius: 50%;
-                    background-color: #ee201a;
-                    box-shadow: 3px 3px 1px 0px rgba(219, 32, 26, 0.75);
-                    width: 20px;
-                    height: 20px;
-                }
-            }
+    
+        .pad-body {
+            background-color: #1a1a1a;
+            height: 90%;
+            margin-top: 10px;
         }
-
     }
 }
+
+
+
+// .section-player-panel {
+    // background-color: $main-background;
+    // min-height: 300px;
+
+    // .player-pad {
+    //     position: fixed;
+    //     bottom: 0;
+    //     left: 12.5%;
+    //     width: 75%;
+    //     height: 320px;
+    //     background-color: #d4d4d4;
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    // }
+
+    // .pad-body {
+    //     background-color: #1a1a1a;
+    //     height: 90%;
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     width: 95%;
+    //     margin-top: 10px;
+    // }
+
+//     .pad-panel-rotator {
+//         display: flex;
+//         align-items: flex-start;
+//         flex-direction: column;
+//         width: 25%;
+
+//         .panel-rotator-info {
+//             color: #ddd;
+//             text-align: center;
+//             margin-bottom: 54px;
+//             width: 75%;
+//         }
+
+//         .rotator {
+//             display: flex;
+//             justify-content: center;
+//             width: 75%;
+
+            
+
+//             div:nth-child(2n+1) {
+//                 span:nth-child(2n) {
+//                 background-color: #000;
+//                 }
+//             }
+
+//             div:nth-child(2n) {
+//                 span{
+//                 background-color: #000;
+//                 }
+//             }
+//             span {
+//                 display: block;
+//                 width:60px;
+//                 height: 60px;
+//                 background-color: #1a1a1a;
+            
+//             }
+//         }
+
+//     }
+
+//     .pad-panel-tile {
+//         display: flex;
+//         align-items: flex-start;
+//         justify-items: center;
+//         flex-direction: column;
+//         width: 25%;
+
+//         .tile-panel-info {
+//             color: #ddd;
+//             text-align: center;
+//             margin-bottom: 30px;
+//             width: 180px;
+//         }
+
+//         .pad-tile {
+//             width: 180px;
+//             height: 180px;
+
+//              .game-grid{
+//             float:left;
+//             height: 60px;
+//             width: 60px;
+//             //border: 1px solid black;
+
+//             &.brick {
+//                 //background-image: url('../img/world.png');
+//                 background-position: 99.7% 50.2%; 
+//             }
+
+//             &.way {
+//                 //background-image: url('../img/dirt1.png');
+//                 background-size: cover;
+//             }
+//         }
+//     }
+// }
+
+//     .pad-panel-card {
+//         display:flex;
+//         align-items: flex-start;
+//         flex-direction: column;
+//         width:25%;
+
+//         .panel-card-info{
+//             color: #ddd;
+//             text-align: center;
+//             margin-bottom: 50px;
+//         }
+
+//         .pad-card {
+//             display: flex;
+//             justify-content: center;
+//             align-items: center;
+//             border: 1px solid $secondary-background;
+//             background-color: $main-background;
+//             border-radius: 5px;
+//             height: 180px;
+//             width: 50%;
+
+//             .card-treasure {
+//                 border: 1px solid black;
+//                 background-image: url(../img/mushroom.png);
+//                 background-size: cover;
+//                 background-color: #d08a63;
+//                 height: 125px;
+//                 width: 125px;
+//                 border-radius: 50%;
+//                 text-align: center;
+//             }
+
+//         }
+//     }
+
+//     .pad-panel-options {
+//         display: flex;
+//         justify-content: space-between ;
+//         align-items: flex-start;
+//         flex-direction: column;
+//         width: 20%;
+//         height: 84%;
+        
+
+//         .points {
+//             color: #ddd;
+          
+//         }
+
+//         .pad-buttons{
+//             .btn {
+//                 color: #ee201a;
+//                 margin-bottom: 10px;
+              
+
+//                 span{
+//                     display: inline-block;
+//                     border-radius: 50%;
+//                     background-color: #ee201a;
+//                     box-shadow: 3px 3px 1px 0px rgba(219, 32, 26, 0.75);
+//                     width: 20px;
+//                     height: 20px;
+//                 }
+//             }
+//         }
+
+//     }
+// }

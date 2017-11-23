@@ -1,16 +1,73 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import FontAwesome from 'react-fontawesome';
 
 import {Tile} from './Tile.jsx';
 import {Grid} from "./Grid.jsx";
 import{Player} from './Player.jsx';
 
+class PlayerPanel extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {tile:this.props.tile}
+    }
+    render(){
+        return(
+            <div className="player-panel clearfix">
+                <div className="player-pad">
+                    <div className="pad-body clearfix">
+                        <div className='col-1-3'></div>
+                        <div className='col-1-3'>
+                            <Tile shape={this.state.tile.shape} treasure={this.state.tile.treasure} rotation={this.state.tile.rotation} index="last" sendObstacles={this.locateObstacles}/> 
+                        </div>
+                        <div className='col-1-3'></div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+}
+
+
+class Arrow extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            isActive: true,
+            direction: this.props.direction,
+            col: this.props.col,
+            row: this.props.row,
+            colClass: 'col-'+this.props.col
+        }
+    }
+
+    callInsertTile = () => {
+        let isVertical;
+        if (this.state.direction === 'up' || this.state.direction === 'down') {
+            isVertical = true;
+            this.props.insertTile(isVertical, this.state.direction, this.state.col);
+        } else {
+            this.props.insertTile(isVertical, this.state.direction, this.state.row);
+        }
+    }
+
+    render(){
+        return(
+            <span className={`${this.state.direction}-arrow ${typeof this.state.col === 'number' ? this.state.colClass : ''} `} style={{cursor: this.state.isActive ? 'pointer' : 'default', color: this.state.isActive ? '#28450f' : '#704b29'}} onClick={this.callInsertTile} >
+                <FontAwesome name={'arrow-circle-' + this.state.direction}/>
+            </span>
+        );
+    }
+}
 class Board extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            displayNewTile: false,
             initialTop: this.props.initialTop,
             initialLeft: this.props.initialLeft,
+            newTileLeft: 0,
+            newTileTop: 0,
             tiles: [],
             playerTop: this.props.initialTop + 70,
             playerLeft: this.props.initialLeft + 70,
@@ -29,6 +86,29 @@ class Board extends React.Component {
         this.generateTiles();
     }
 
+    insertTile = (isVertical, direction, multiplier) => {
+        if (isVertical) {
+            
+            let top;
+            direction === 'up' ?  top = 900 : top = -180;
+            this.setState({
+                newTileLeft: this.state.initialLeft + (182 * (multiplier-1)), 
+                newTileTop: this.state.initialTop + top,
+                displayNewTile: true,
+                insertTile: true
+            })
+        } else {
+            let left;
+            direction === 'left'? left = 1274 : left = -180;
+            this.setState({
+                newTileLeft: this.state.initialLeft + left,
+                newTileTop: this.state.initialTop + (182 * (multiplier-1)),
+                displayNewTile: true,
+                insertTile: true
+            })
+        }
+    }
+
     collisionControl(key) {
         let currPlayerPos = {leftBound: this.state.playerLeft, rightBound: this.state.playerLeft + this.state.playerWidth, topBound: this.state.playerTop, bottomBound: this.state.playerTop + this.state.playerHeight }
 
@@ -36,7 +116,6 @@ class Board extends React.Component {
 
 
         let currentTile = this.findTile(currPlayerPos.leftBound, currPlayerPos.rightBound, currPlayerPos.topBound, currPlayerPos.bottomBound);
-        console.log(currentTile)
         let currentMap;
         let mapOnRight;
         let mapOnLeft;
@@ -359,7 +438,8 @@ class Board extends React.Component {
         }
     }
 
-    locateObstacles = (tileIndex, tilePos, grid) => {
+    locateObstacles = (tileIndex, grid) => {
+       
         let tile = {index: tileIndex}
         let upperLeftObstacle = null;
         let upperMiddleObstacle = null;
@@ -715,17 +795,41 @@ class Board extends React.Component {
         let tilesRow5 = row5.map(tile => <Tile shape={tile.shape} treasure={tile.treasure} rotation={tile.rotation} initialX={0} initialY={0} index={index++} sendObstacles={this.locateObstacles}/>)
 
 
+        if (this.state.tiles.length !== 0){        
+            return(
+                <div className="game-panel">
+                    <Player top={this.state.playerTop} left={this.state.playerLeft} width={this.state.playerWidth}height={this.state.playerHeight}/>
+                    <div className='row clearfix'>
+                        <Arrow direction="down" col={2} insertTile={this.insertTile}/>
+                        <Arrow direction="down" col={4} insertTile={this.insertTile}/>
+                        <Arrow direction="down" col={6} insertTile={this.insertTile}/>
+                        {tilesRow1}
+                    </div>
+                    <div className='row clearfix'>
+                        <Arrow direction="right" row={2} insertTile={this.insertTile}/>
+                        {tilesRow2}
+                        <Arrow direction="left" row={2} insertTile={this.insertTile}/>
+                    </div>
+                    <div className='row clearfix'>{tilesRow3}</div>
+                    <div className='row clearfix'>
+                        <Arrow direction ="right" row={4} insertTile={this.insertTile}/>
+                        {tilesRow4}
+                        <Arrow direction ="left" row={4} insertTile={this.insertTile}/>                
+                    </div>
+                    <div className='row clearfix'>
+                        {tilesRow5}
+                        <Arrow direction="up" col={2} insertTile={this.insertTile}/>
+                        <Arrow direction="up" col={4} insertTile={this.insertTile}/>
+                        <Arrow direction="up" col={6} insertTile={this.insertTile}/>
+                    </div>
+                    <Tile shape={this.state.tiles[this.state.tiles.length-1].shape} treasure={this.state.tiles[this.state.tiles.length-1].treasure} rotation={this.state.tiles[this.state.tiles.length-1].rotation} index="last" sendObstacles={this.locateObstacles} isNewOnBoard={true} isDisplayed={this.state.displayNewTile} left={this.state.newTileLeft} top={this.state.newTileTop}/> 
 
-        return(
-            <div className="game-panel">
-                <Player top={this.state.playerTop} left={this.state.playerLeft} width={this.state.playerWidth}height={this.state.playerHeight}/>
-                <div className='row clearfix'>{tilesRow1}</div>
-                <div className='row clearfix'>{tilesRow2}</div>
-                <div className='row clearfix'>{tilesRow3}</div>
-                <div className='row clearfix'>{tilesRow4}</div>
-                <div className='row clearfix'>{tilesRow5}</div>
-            </div>
-        );
+                    <PlayerPanel tile={this.state.tiles[this.state.tiles.length-1]}/>
+                </div>
+            );
+        } else {
+            return null;
+        }
     }
 }
 

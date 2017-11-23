@@ -6,6 +6,10 @@ class Tile extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            isNewOnBoard: this.props.isNewOnBoard || false,
+            isDisplayed: this.props.isDisplayed,
+            left: this.props.left,
+            top: this.props.top,
             index:  this.props.index,
             shape: this.props.shape, // turn, straight, tShape
             rotation: this.props.rotation, // 0-4
@@ -29,7 +33,11 @@ class Tile extends React.Component {
     componentWillReceiveProps(nextProps) {
         this.setState({
             index: nextProps.index,
-            rotation: nextProps.rotation
+            rotation: nextProps.rotation,
+            isNewOnBoard:nextProps.isNewOnBoard,
+            isDisplayed: nextProps.isDisplayed,
+            left: nextProps.left,
+            top: nextProps.top
         }, this.buildTile());
     }
 
@@ -145,8 +153,10 @@ class Tile extends React.Component {
             }
 
         }
-        let pos = ReactDOM.findDOMNode(this).getBoundingClientRect();
-        this.props.sendObstacles(this.state.index, pos, rows)
+
+        if(this.state.index !== 'last'){
+            this.props.sendObstacles(this.state.index, rows)
+        }
     }
 
 
@@ -156,19 +166,29 @@ class Tile extends React.Component {
         this.state.grid.forEach((row,j) => {
             let mappedRow = row.map((el,i) => {
                 let treasure = (i+j*3 === 4) ? this.state.treasure : null;
-                console.log(treasure)
                 return <Grid class={el === 0 ? 'brick' : 'way'} background={el === 0 ? 'gray' : 'rgba(0,255,0,0.5)'} type={el} treasure={(i+j*3 === 4) ? this.state.treasure : null}/>;
             })
 
             grid.push(mappedRow);
         })
         
-       
-        return(
-            <div className="game-tile clearfix">
-                {grid}
-            </div>
-        );
+        if (!this.state.isNewOnBoard){
+            return(
+                <div className="game-tile clearfix">
+                    {grid}
+                </div>
+            );
+        } else if (this.state.isDisplayed) {
+            console.log('left, top',this.state.left, this.state.top)
+            return(
+                
+                <div className="game-tile clearfix" style={{position: 'absolute', left: this.state.left + 'px', top: this.state.top + 'px'}}>
+                    {grid}
+                </div>
+            );
+        } else {
+            return null;
+        }
     }
 } //end of Tile
 

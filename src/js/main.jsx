@@ -1,38 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReactFontAwesome from 'react-fontawesome';
 
-import{Board} from './components/Board.jsx'
+
+import {Header} from './components/Header.jsx'
+import{SectionGame} from './components/SectionGame.jsx';
 require('../css/app.scss')
 
 
 document.addEventListener('DOMContentLoaded', function(){
-    
-    class Header extends React.Component {
-        render(){
-            return(
-                <header className="page-header">
-                    <div className="container">
-                        <div className="title">
-                            <h1>Labirynth</h1>
-                        </div>
-                    </div>
-                </header> 
-            );
-        }
-    }
-
-    class SectionGame extends React.Component {
-        render(){
-            return(
-                <section className="section-game">
-                    <div className="container clearfix">
-                        <Board initialTop={231} initialLeft={283}/>
-                    </div>
-                </section>
-            );
-        }
-    }
-
     class SectionPlayerPanel extends React.Component {
         render(){
             return(
@@ -56,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 
     ReactDOM.render(
-        <App />,
+       <App/>,
         document.getElementById('app')
     );
 });
