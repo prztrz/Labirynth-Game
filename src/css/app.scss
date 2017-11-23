@@ -1,16 +1,47 @@
+$secondary-background: #823F17;
+$main-background: #AA6339;
+$main-font-color: #5B2302;
+$active-arrow-color: #28450f;
+
 * {
     box-sizing: border-box;
+
 }
 
+
+// GLOBAL CLASSES
 .clearfix:after {
     content: "";
     display: table;
     clear: both;
 }
 
+.visuallyhidden {
+    display: none;
+    border: 0;
+    clip: rect(0 0 0 0);
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
+}
+
+.treasure {
+    margin: 10px;
+    width: 40px;
+    height: 40px;
+    // background-image: url('../img/mushroom.png');
+    background-size: cover; 
+}
+
 .container {
     width: 100%;
-    max-width: 1280px; 
+    max-width: 1280px; //max-width to avoide too high width on extra large screens
     margin: 0 auto;
 }
 
@@ -19,16 +50,317 @@ body {
     margin: 0;
 }
 
-.game-tile {
-    float: left;
-    border: 1px solid #000;
-    width: 180px;
-    height: 180px;
-    box-sizing: content-box;
+//HEADER
 
-    .game-grid{
-        float:left;
-        height: 60px;
-        width: 60px
+.page-header {
+    background-color: $secondary-background;
+    min-height: 60px;
+
+    .title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+    }
+}
+
+//SECTION GAME 
+
+.section-game {
+    background-color: $main-background;
+    height: 1200px;
+
+    .container {
+        height: 1000px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .game-panel {
+        
+        margin-top: 200px;
+        height: 100%;
+    }
+
+    .row {
+        position: relative;
+
+        .right-arrow {
+            position: absolute;
+            top: 90px;
+            right: 100%;
+            font-size: 3rem;
+            color: $active-arrow-color;
+            transform: translate(-50%,-50%);
+        }
+
+        .left-arrow {
+            position: absolute;
+            top: 90px;
+            left: 101.2%;
+            font-size: 3rem;
+            color: $active-arrow-color;
+            transform: translatey(-50%);
+        }
+
+        .down-arrow {
+            position: absolute;
+            top: -40%;
+            font-size: 3rem;
+            color: $active-arrow-color;
+            transform: translateX(-50%);
+
+            &.col-2{
+                left: 272px;
+            }
+
+            &.col-4 {
+                left: calc(272px + 180px * 2);
+            }
+
+            &.col-6 {
+                left: calc(272px + 180px * 4);
+            }
+        }
+
+        .up-arrow {
+            position: absolute;
+            bottom: -40%;
+            font-size: 3rem;
+            color: $active-arrow-color;
+            transform: translateX(-50%);
+
+            &.col-2{
+                left: 272px;
+            }
+
+            &.col-4 {
+                left: calc(272px + 180px * 2);
+            }
+
+            &.col-6 {
+                left: calc(272px + 180px * 4);
+            }
+        }
+    }
+    .game-tile{
+        float: left;
+        border: 1px solid #000;
+        width: 180px;
+        height: 180px;
+        box-sizing: content-box;
+
+        .game-grid{
+            float:left;
+            height: 60px;
+            width: 60px;
+            //border: 1px solid black;
+            h4 {
+                padding-left: 20px;
+                padding-top: 10px;
+            }
+
+            &.brick {
+               background-image: url('../../images/world.png');
+                background-position: 99.7% 50.2%; 
+            }
+
+            &.way {
+                background-image: url('../../images/dirt1.png');
+                background-size: cover;
+            }
+
+            .player {
+                display: block;
+                margin-top: 5px;
+                margin-left: 10px;
+                height: 50px;
+                width: 25px;
+                
+                &.player-one {
+                    //background-image: url('../img/mario-sprite.png');
+                    background-position: 35px -2px;
+                }
+            }
+        }
+    }
+}
+
+.section-player-panel {
+    background-color: $main-background;
+    min-height: 300px;
+
+    .player-pad {
+        position: fixed;
+        bottom: 0;
+        left: 12.5%;
+        width: 75%;
+        height: 320px;
+        background-color: #d4d4d4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pad-body {
+        background-color: #1a1a1a;
+        height: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 95%;
+        margin-top: 10px;
+    }
+
+    .pad-panel-rotator {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        width: 25%;
+
+        .panel-rotator-info {
+            color: #ddd;
+            text-align: center;
+            margin-bottom: 54px;
+            width: 75%;
+        }
+
+        .rotator {
+            display: flex;
+            justify-content: center;
+            width: 75%;
+
+            
+
+            div:nth-child(2n+1) {
+                span:nth-child(2n) {
+                background-color: #000;
+                }
+            }
+
+            div:nth-child(2n) {
+                span{
+                background-color: #000;
+                }
+            }
+            span {
+                display: block;
+                width:60px;
+                height: 60px;
+                background-color: #1a1a1a;
+            
+            }
+        }
+
+    }
+
+    .pad-panel-tile {
+        display: flex;
+        align-items: flex-start;
+        justify-items: center;
+        flex-direction: column;
+        width: 25%;
+
+        .tile-panel-info {
+            color: #ddd;
+            text-align: center;
+            margin-bottom: 30px;
+            width: 180px;
+        }
+
+        .pad-tile {
+            width: 180px;
+            height: 180px;
+
+             .game-grid{
+            float:left;
+            height: 60px;
+            width: 60px;
+            //border: 1px solid black;
+
+            &.brick {
+                //background-image: url('../img/world.png');
+                background-position: 99.7% 50.2%; 
+            }
+
+            &.way {
+                //background-image: url('../img/dirt1.png');
+                background-size: cover;
+            }
+        }
+    }
+}
+
+    .pad-panel-card {
+        display:flex;
+        align-items: flex-start;
+        flex-direction: column;
+        width:25%;
+
+        .panel-card-info{
+            color: #ddd;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .pad-card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid $secondary-background;
+            background-color: $main-background;
+            border-radius: 5px;
+            height: 180px;
+            width: 50%;
+
+            .card-treasure {
+                border: 1px solid black;
+                background-image: url(../img/mushroom.png);
+                background-size: cover;
+                background-color: #d08a63;
+                height: 125px;
+                width: 125px;
+                border-radius: 50%;
+                text-align: center;
+            }
+
+        }
+    }
+
+    .pad-panel-options {
+        display: flex;
+        justify-content: space-between ;
+        align-items: flex-start;
+        flex-direction: column;
+        width: 20%;
+        height: 84%;
+        
+
+        .points {
+            color: #ddd;
+          
+        }
+
+        .pad-buttons{
+            .btn {
+                color: #ee201a;
+                margin-bottom: 10px;
+              
+
+                span{
+                    display: inline-block;
+                    border-radius: 50%;
+                    background-color: #ee201a;
+                    box-shadow: 3px 3px 1px 0px rgba(219, 32, 26, 0.75);
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+
     }
 }

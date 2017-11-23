@@ -6,25 +6,20 @@ class Grid extends React.Component {
         super(props);
         this.state = {
             type: this.props.type, //0-brick 1-way
-            positionIndex: this.props.positionIndex,
-            background: this.props.background
+            treasure: this.props.treasure,
+            background: this.props.background,
+            class: this.props.class
         }
     }
 
-    componentDidMount() {
-        this.getPosition();
+    componentWillReceiveProps(nextProps) {
+        (this.state.treasure !== nextProps.treasure) ? this.setState({treasure: nextProps.treasure}) : null
     }
 
-    componentDidUpdate() {
-        this.getPosition();
-    }
-
-    getPosition() {
-        this.pos = ReactDOM.findDOMNode(this).getBoundingClientRect();          
-    }
     render(){
+        let treasure = (this.props.treasure !== null && this.props.treasure !== 0) ? this.props.treasure : '';
         return(
-            <div className="game-grid" style={{backgroundColor: this.state.background }}>{this.props.type}</div>
+            <div className={'game-grid ' + this.state.class} style={{backgroundColor: this.state.background }}><h4>{treasure}</h4></div>
         );
     }
 }
