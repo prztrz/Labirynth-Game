@@ -6,7 +6,7 @@ class Tile extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            isNewOnBoard: this.props.isNewOnBoard || false,
+            isNewOnBoard: this.props.isNewOnBoard,
             isDisplayed: this.props.isDisplayed,
             left: this.props.left,
             top: this.props.top,
@@ -18,11 +18,6 @@ class Tile extends React.Component {
             initialY: this.props.initialY,
             treasure: this.props.treasure
         }
-
-        this.isFirstInRow = false;
-        this.isLastInRow = false;
-        this.isFirstInCol = false;
-        this.isLastInCol = false;
 
     }
 
@@ -162,7 +157,6 @@ class Tile extends React.Component {
 
     render(){
         const grid = [];
-
         this.state.grid.forEach((row,j) => {
             let mappedRow = row.map((el,i) => {
                 let treasure = (i+j*3 === 4) ? this.state.treasure : null;

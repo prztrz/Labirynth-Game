@@ -205,7 +205,35 @@ body {
             background-color: #1a1a1a;
             height: 90%;
             margin-top: 10px;
+            padding: 30px;
         }
+
+        .rotator{
+            .rotate-button {
+                width: 60px;
+                height: 60px;
+                background-color: #000;
+                box-shadow: 3px 2px 1px 1px rgba(177, 178, 177, 0.85);
+                transition: box-shadow 0.2s;
+            }
+        }
+
+        .btn {
+            color: #ee201a;
+            margin-top: 40px;
+            margin-left: 35px;
+            
+
+            span{
+                display: inline-block;
+                border-radius: 50%;
+                background-color: #ee201a;
+                box-shadow: 3px 3px 1px 0px rgba(219, 32, 26, 0.75);
+                width: 20px;
+                height: 20px;
+            }
+        }
+        
     }
 }
 
@@ -366,22 +394,22 @@ body {
           
 //         }
 
-//         .pad-buttons{
-//             .btn {
-//                 color: #ee201a;
-//                 margin-bottom: 10px;
+        // .pad-buttons{
+        //     .btn {
+        //         color: #ee201a;
+        //         margin-bottom: 10px;
               
 
-//                 span{
-//                     display: inline-block;
-//                     border-radius: 50%;
-//                     background-color: #ee201a;
-//                     box-shadow: 3px 3px 1px 0px rgba(219, 32, 26, 0.75);
-//                     width: 20px;
-//                     height: 20px;
-//                 }
-//             }
-//         }
+        //         span{
+        //             display: inline-block;
+        //             border-radius: 50%;
+        //             background-color: #ee201a;
+        //             box-shadow: 3px 3px 1px 0px rgba(219, 32, 26, 0.75);
+        //             width: 20px;
+        //             height: 20px;
+        //         }
+        //     }
+        // }
 
 //     }
 // }
