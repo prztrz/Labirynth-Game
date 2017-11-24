@@ -15,6 +15,7 @@ class Board extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            boardKey: Math.random(),
             areArrowsActive: false,
             displayNewTile: false,
             initialTop: this.props.initialTop,
@@ -27,6 +28,7 @@ class Board extends React.Component {
             playerLeft: this.props.initialLeft + 70,
             playerWidth: 30,
             playerHeight: 30,
+            img: 1
         }
         this.obstacleMap = [];
         this.canPlayerMove = true;
@@ -46,10 +48,29 @@ class Board extends React.Component {
 
     updateBoard = () => {
         let tiles= this.state.tiles.slice();
-        console.log('tiles po slajsie', tiles)
         let toShift = tiles[tiles.length-1]
         let toUnshift;
+
         if (this.state.newTileTop === 161) {
+
+            if(this.state.newTileLeft === 462) {
+                toUnshift = tiles[26];
+                toShift.rotation = (this.state.newTileRotation !== '') ? this.state.newTileRotation : toShift.rotation;
+                
+                tiles.splice(26, 1, tiles[20]);
+                tiles.splice(20, 1, tiles[13]);
+                tiles.splice(13, 1, tiles[6]);
+                tiles.splice(6, 1, tiles[0]);
+                tiles.splice(0, 1, toShift);
+                //tiles.push(toUnshift)
+                tiles.pop()
+
+                tiles[tiles.length] = toUnshift;
+                // console.log('JUŻ PO WSZYSTKIM',tiles)
+
+                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random()})
+            }
+
             if(this.state.newTileLeft === 826) {
                     toUnshift = tiles[28];
                     toShift.rotation = (this.state.newTileRotation !== '') ? this.state.newTileRotation : toShift.rotation;
@@ -63,10 +84,114 @@ class Board extends React.Component {
                     tiles.pop()
 
                     tiles[tiles.length] = toUnshift;
-                    console.log('JUŻ PO WSZYSTKIM',tiles)
+                    // console.log('JUŻ PO WSZYSTKIM',tiles)
 
-                     this.setState({tiles: tiles, key: Math.random(), displayNewTile: false})
+                     this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random()})
             }
+
+            if(this.state.newTileLeft === 1190) {
+                toUnshift = tiles[30];
+                toShift.rotation = (this.state.newTileRotation !== '') ? this.state.newTileRotation : toShift.rotation;
+                
+                tiles.splice(30, 1, tiles[24]);
+                tiles.splice(24, 1, tiles[17]);
+                tiles.splice(17, 1, tiles[10]);
+                tiles.splice(10, 1, tiles[4]);
+                tiles.splice(4, 1, toShift);
+                //tiles.push(toUnshift)
+                tiles.pop()
+
+                tiles[tiles.length] = toUnshift;
+                // console.log('JUŻ PO WSZYSTKIM',tiles)
+
+                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random()})
+            }
+        }
+        
+        if (this.state.newTileTop === 1241) {
+            if(this.state.newTileLeft === 462){
+                toUnshift = tiles[0];
+                toShift.rotation = (this.state.newTileRotation !== '') ? this.state.newTileRotation : toShift.rotation;
+                
+                tiles.splice(0, 1, tiles[6]);
+                tiles.splice(6, 1, tiles[13]);
+                tiles.splice(13, 1, tiles[20]);
+                tiles.splice(20, 1, tiles[26]);
+                tiles.splice(26, 1, toShift);
+                //tiles.push(toUnshift)
+                tiles.pop()
+
+                tiles[tiles.length] = toUnshift;
+                // console.log('JUŻ PO WSZYSTKIM',tiles)
+
+                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random()})
+            }
+
+             if(this.state.newTileLeft === 826) {
+                    toUnshift = tiles[2];
+                    toShift.rotation = (this.state.newTileRotation !== '') ? this.state.newTileRotation : toShift.rotation;
+                    
+                    tiles.splice(2, 1, tiles[8]);
+                    tiles.splice(8, 1, tiles[15]);
+                    tiles.splice(15, 1, tiles[22]);
+                    tiles.splice(22, 1, tiles[28]);
+                    tiles.splice(28, 1, toShift);
+                    //tiles.push(toUnshift)
+                    tiles.pop()
+
+                    tiles[tiles.length] = toUnshift;
+                    // console.log('JUŻ PO WSZYSTKIM',tiles)
+
+                     this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random()})
+            }
+
+            if(this.state.newTileLeft === 1190) {
+                toUnshift = tiles[4];
+                toShift.rotation = (this.state.newTileRotation !== '') ? this.state.newTileRotation : toShift.rotation;
+                
+                tiles.splice(4, 1, tiles[10]);
+                tiles.splice(10, 1, tiles[17]);
+                tiles.splice(17, 1, tiles[24]);
+                tiles.splice(24, 1, tiles[30]);
+                tiles.splice(30, 1, toShift);
+                //tiles.push(toUnshift)
+                tiles.pop()
+
+                tiles[tiles.length] = toUnshift;
+                // console.log('JUŻ PO WSZYSTKIM',tiles)
+
+                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random()})
+            }
+        }
+
+        if(this.state.newTileLeft === 100) {
+            if(this.state.newTileTop === 523) {
+                toUnshift = tiles[11];
+                tiles.splice(11,1, tiles[10]);
+                for(let i = 10; i > 5; i--) {
+                    tiles.splice(i, 1, tiles[i-1])
+                }
+                tiles.splice(5, 1, toShift);
+
+                tiles.pop()
+                tiles[tiles.length] = toUnshift;
+
+                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random()})
+            }
+            // NIEDOKOŃCZONE
+            // if(this.state.newTileTop === 887) {
+            //     toUnshift = tiles[];
+            //     tiles.splice(19,1, tiles[10]);
+            //     for(let i = 10; i > 5; i--) {
+            //         tiles.splice(i, 1, tiles[i-1])
+            //     }
+            //     tiles.splice(5, 1, toShift);
+
+            //     tiles.pop()
+            //     tiles[tiles.length] = toUnshift;
+
+            //     this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random()})
+            // }
         }
     }
 
@@ -649,13 +774,14 @@ class Board extends React.Component {
 
     moveUp = () => {
         this.setState({
-            playerTop: this.state.playerTop - 5
+            playerTop: this.state.playerTop - 5,
+            img: this.state.img+1
         }) 
     }
 
     moveDown = () => {
         this.setState({
-            playerTop: this.state.playerTop + 5
+            playerTop: this.state.playerTop + 5,
         }) 
     }
 
@@ -771,7 +897,7 @@ class Board extends React.Component {
         let row4 =[];
         let row5 =[];
         let index = 0;
-        let key = Math.random();
+        let key = this.state.boardKey;
 
 
         this.state.tiles.forEach((tile, i) => {
@@ -837,9 +963,8 @@ class Board extends React.Component {
 
         let tilesRow5 = row5.map(tile => <Tile shape={tile.shape} treasure={tile.treasure} rotation={tile.rotation} initialX={0} initialY={0} index={index++} isdisplayed={tile.isDisplayed} sendObstacles={this.locateObstacles}key={key++}/>)
 
-        console.log('NEW TILE LEFT:', this.state.newTileLeft);
-        console.log('NEW TILE TOP', this.state.newTileTop)
-        console.log('TILE W TRENDER',this.state.tiles)
+        console.log('top left',this.state.newTileLeft, this.state.newTileTop)
+
         if (this.state.tiles.length !== 0){       
             return(
                 <div className="game-panel">

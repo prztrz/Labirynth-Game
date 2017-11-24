@@ -10,7 +10,7 @@ class Player extends React.Component {
             left: this.props.left,
             top: this.props.top,
             width: this.props.width,
-            height: this.props.height
+            height: this.props.height,
         }
     }
 
@@ -27,7 +27,7 @@ class Player extends React.Component {
     
     render(){
         return(
-            <div style={{height: this.state.height + 'px', width: this.state.width + 'px', border: '1px solid blue', position: 'absolute', left: this.state.left + 'px', top: this.state.top + 'px', zIndex: '1'}} />
+            <div className='player' style={{height: this.state.height + 'px', width: this.state.width + 'px', position: 'absolute', left: this.state.left + 'px', top: this.state.top + 'px', zIndex: '1', backgroundImage: `url(./../../images/sprites/mario/1.png)`}} />
         );
     }
 }

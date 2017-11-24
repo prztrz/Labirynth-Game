@@ -78,6 +78,16 @@ body {
 .section-game {
     background-color: $main-background;
 
+    .player {
+        height: 30px;
+        width: 30px;
+        position: absolute;
+        z-index: 1;
+        background-image: url(./../../images/sprites/mario/1.png);
+        background-size: 137%;
+        background-position: -4px 28px;
+    }
+
 
     .game-panel {
         
