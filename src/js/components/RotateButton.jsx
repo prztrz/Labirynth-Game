@@ -10,6 +10,12 @@ class RotateButton extends React.Component {
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            isActive: nextProps.isActive
+        })
+    }
+
     callRotateTile = () => {
         if (this.state.isActive){
             this.props.callRotateTile(this.props.position)

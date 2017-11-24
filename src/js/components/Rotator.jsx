@@ -6,7 +6,13 @@ import { RotateButton } from "./RotateButton.jsx";
 class Rotator extends React.Component {
     constructor(props){
         super(props);
-        this.state = {isRotatorActive: true}
+        this.state = {isActive: this.props.isActive}
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            isActive: this.props.isActive
+        })
     }
     render(){
         return(
@@ -16,7 +22,7 @@ class Rotator extends React.Component {
                         &nbsp;
                     </div>
                     <div className="col-1-3">
-                        <RotateButton position="up" callRotateTile={this.props.callRotateTile} isActive={this.state.isRotatorActive}/>
+                        <RotateButton position="up" callRotateTile={this.props.callRotateTile} isActive={this.props.isActive}/>
                     </div>
                     <div className="col-1-3">
                         &nbsp;
@@ -25,13 +31,13 @@ class Rotator extends React.Component {
 
                 <div className="clearfix" style={{width: '176px', marginLeft: '70px'}}>
                     <div className="col-1-3">
-                        <RotateButton position="left" callRotateTile={this.props.callRotateTile} isActive={this.state.isRotatorActive}/>
+                        <RotateButton position="left" callRotateTile={this.props.callRotateTile} isActive={this.props.isActive}/>
                     </div>
                     <div className="col-1-3">
                         &nbsp;
                     </div>
                     <div className="col-1-3">
-                        <RotateButton position="right" callRotateTile={this.props.callRotateTile} isActive={this.state.isRotatorActive}/>
+                        <RotateButton position="right" callRotateTile={this.props.callRotateTile} isActive={this.props.isActive}/>
                     </div>
                 </div>
 
@@ -40,7 +46,7 @@ class Rotator extends React.Component {
                         &nbsp;
                     </div>
                     <div className="col-1-3">
-                        <RotateButton position="down" callRotateTile={this.props.callRotateTile} isActive={this.state.isRotatorActive}/>
+                        <RotateButton position="down" callRotateTile={this.props.callRotateTile} isActive={this.props.isActive}/>
                     </div>
                     <div className="col-1-3">
                         &nbsp;

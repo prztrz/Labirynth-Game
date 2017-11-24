@@ -21,6 +21,7 @@ class Board extends React.Component {
             initialLeft: this.props.initialLeft,
             newTileLeft: 0,
             newTileTop: 0,
+            newTileRotation: '',
             tiles: [],
             playerTop: this.props.initialTop + 70,
             playerLeft: this.props.initialLeft + 70,
@@ -40,13 +41,40 @@ class Board extends React.Component {
     }
 
     toggleArrows = () => {
-        console.log('pupek');
-        this.state.areArrowsActive ? this.setState({areArrowsActive: false, key: Math.random()}) : this.setState({areArrowsActive: true, key:Math.random()})
+        this.state.areArrowsActive ? this.setState({areArrowsActive: false}) : this.setState({areArrowsActive: true})
+    }
+
+    updateBoard = () => {
+        let tiles= this.state.tiles.slice();
+        console.log('tiles po slajsie', tiles)
+        let toShift = tiles[tiles.length-1]
+        let toUnshift;
+        if (this.state.newTileTop === 161) {
+            if(this.state.newTileLeft === 826) {
+                    toUnshift = tiles[28];
+                    toShift.rotation = (this.state.newTileRotation !== '') ? this.state.newTileRotation : toShift.rotation;
+                    
+                    tiles.splice(28, 1, tiles[22]);
+                    tiles.splice(22, 1, tiles[15]);
+                    tiles.splice(15, 1, tiles[8]);
+                    tiles.splice(8, 1, tiles[2]);
+                    tiles.splice(2, 1, toShift);
+                    //tiles.push(toUnshift)
+                    tiles.pop()
+
+                    tiles[tiles.length] = toUnshift;
+                    console.log('JUŻ PO WSZYSTKIM',tiles)
+
+                     this.setState({tiles: tiles, key: Math.random(), displayNewTile: false})
+            }
+        }
     }
 
     rotateTile = (direction) => {
         let tiles = this.state.tiles.slice();
+
         let tile = tiles.pop();
+    
         switch(direction) {
             case 'left':
                 if (tile.rotation > 0) {
@@ -89,6 +117,7 @@ class Board extends React.Component {
 
         this.setState({
             tiles: tiles,
+            newTileRotation: tile.rotation,
             key: Math.random()
         })
     }
@@ -734,7 +763,7 @@ class Board extends React.Component {
     }
 
     render(){
-
+        
 
         let row1 = [];
         let row2 = [];
@@ -742,7 +771,7 @@ class Board extends React.Component {
         let row4 =[];
         let row5 =[];
         let index = 0;
-        let key = 0;
+        let key = Math.random();
 
 
         this.state.tiles.forEach((tile, i) => {
@@ -808,7 +837,9 @@ class Board extends React.Component {
 
         let tilesRow5 = row5.map(tile => <Tile shape={tile.shape} treasure={tile.treasure} rotation={tile.rotation} initialX={0} initialY={0} index={index++} isdisplayed={tile.isDisplayed} sendObstacles={this.locateObstacles}key={key++}/>)
 
-        console.log(this.obstacleMap)
+        console.log('NEW TILE LEFT:', this.state.newTileLeft);
+        console.log('NEW TILE TOP', this.state.newTileTop)
+        console.log('TILE W TRENDER',this.state.tiles)
         if (this.state.tiles.length !== 0){       
             return(
                 <div className="game-panel">
@@ -836,9 +867,9 @@ class Board extends React.Component {
                         <Arrow direction="up" col={4} insertTile={this.insertTile} isActive={this.state.areArrowsActive}/>
                         <Arrow direction="up" col={6} insertTile={this.insertTile} isActive={this.state.areArrowsActive}/>
                     </div>
-                    <Tile shape={this.state.tiles[this.state.tiles.length-1].shape} treasure={this.state.tiles[this.state.tiles.length-1].treasure} rotation={this.state.tiles[this.state.tiles.length-1].rotation} index="last" sendObstacles={this.locateObstacles} isNewOnBoard={true} isDisplayed={this.state.displayNewTile} left={this.state.newTileLeft} top={this.state.newTileTop}/> 
+                    <Tile shape={this.state.tiles[this.state.tiles.length-1].shape} treasure={this.state.tiles[this.state.tiles.length-1].treasure} rotation={this.state.tiles[this.state.tiles.length-1].rotation} index="last" sendObstacles={this.locateObstacles} isNewOnBoard={true} isDisplayed={this.state.displayNewTile} left={this.state.newTileLeft} top={this.state.newTileTop} key={key++}/> 
 
-                    <PlayerPanel tile={this.state.tiles[this.state.tiles.length-1]} callRotateTile={this.rotateTile} key={this.state.key} callToggleArrows={this.toggleArrows}/>
+                    <PlayerPanel tile={this.state.tiles[this.state.tiles.length-1]} callRotateTile={this.rotateTile} key={this.state.key} callToggleArrows={this.toggleArrows} callUpdateBoard={this.updateBoard}/>
                 </div>
             );
         } else {

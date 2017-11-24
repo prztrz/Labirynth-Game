@@ -7,20 +7,23 @@ class PadButton extends React.Component {
         super(props);
         this.state = {
             isActive: this.props.isActive,
-            text: 'confirm rotation'
+            text: this.props.text
         }
     }
 
     componentWillReceiveProps(nextProps){
-        this.setState({isActive: nextProps.isActive})
+        this.setState({isActive: nextProps.isActive, text: nextProps.text})
     }
 
     handleClick = () => {
         if(this.state.isActive) {
             this.props.callToggleArrows();
-            this.setState({isActive:false});
+            this.props.callToggleButton();
+            this.props.callToggleRotator();
+            if(this.props.callUpdateBoard) {
+                this.props.callUpdateBoard()
+            }
         }
-        console.log(this)
     }
     
     render(){
