@@ -1,6 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+/**
+ * @class Player -represents the player's sprite
+ * 
+ * @method componentWillReceiveProps -changes this.props.state.left and this.props.state.right depending on the values received with props - it changes the position of the player's sprite
+ * 
+
+ */
+
 
 class Player extends React.Component {
     

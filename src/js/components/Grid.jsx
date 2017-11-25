@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+/**
+ * @class Grid represents single grid square on the game tile
+ * 
+ * @method render - renders the component, if the component receive this.props.tresure value other then null and 0, places treasure on the component.
+ */
 class Grid extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            type: this.props.type, //0-brick 1-way
+            type: this.props.type, //0-obstacle(wall) 1-way
             treasure: this.props.treasure,
             background: this.props.background,
             class: this.props.class

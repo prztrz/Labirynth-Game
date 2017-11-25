@@ -4,6 +4,15 @@ import ReactDOM from 'react-dom';
 import { Rotator } from "./Rotator.jsx";
 import { PadButton } from "./PadButton.jsx";
 import { Tile } from "./Tile.jsx";
+
+/**
+ * @class PlayerPanel represents the game control panel
+ * 
+ * @method toggleButton toggles the activity of confirm rotation and confirm position buttons
+ * 
+ * @method toggleRotator toggles the activity of rotate buttons
+ * 
+ */
 class PlayerPanel extends React.Component {
     constructor(props){
         super(props);

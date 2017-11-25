@@ -3,6 +3,12 @@ import ReactDOM from 'react-dom';
 
 import { RotateButton } from "./RotateButton.jsx";
 
+/**
+ * @class Rotator - represents the tile-rotation control panel
+ * 
+ * @method componentWillReceiveProps -changes this.state.isActive depending on value received with props
+ * 
+ */
 class Rotator extends React.Component {
     constructor(props){
         super(props);

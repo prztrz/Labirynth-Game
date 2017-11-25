@@ -2,21 +2,29 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Grid } from "./Grid.jsx";
 
+/**
+ * @class Tile - represent the tile on the game board
+ * 
+ * @method buildTile - run when the componend is mounted or it receives props. Creates array of 0-1 number arrays representing Tile grid (0 - obstacle(wall), 1 - way) depending on this.state.rotation and this.state.shape values. Then sets this.state.grid value and if the index of the Tile is not 'last' runs this.props.sendObstacles() method to call locateObstacles method of Board component
+ * 
+ * @method render - render the component - if this.props.isNewOnBoard is true set position absolute to the component style, if this.state.isDiplayed is false sets display:none to the component style.
+ */
+
 class Tile extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            isNewOnBoard: this.props.isNewOnBoard,
-            isDisplayed: this.props.isDisplayed,
+            isNewOnBoard: this.props.isNewOnBoard, //true if the tile is shifted-in to the board
+            isDisplayed: this.props.isDisplayed, //true if the tile is visibly (applies to shifted in tile)
             left: this.props.left,
             top: this.props.top,
             index:  this.props.index,
             shape: this.props.shape, // turn, straight, tShape
-            rotation: this.props.rotation, // 0-4
-            grid: [[],[],[]], //0 - brick 1- way
+            rotation: this.props.rotation, // represents the rotation state of the tile
+            grid: [[],[],[]], //array of 0-1 number arrays representing the state of grid elements on the Tile (0 - obstacle (wall) 1 - way)
             initialX: this.props.initialX,
             initialY: this.props.initialY,
-            treasure: this.props.treasure
+            treasure: this.props.treasure //treasure number set on the Tile (0 - no treasure located on the tile, A-D - starting positions, 1-16 - numbers of the treasuers)
         }
 
     }

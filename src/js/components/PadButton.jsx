@@ -1,6 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+/**
+ * @class PadButton represents the game-flow control button
+ * 
+ * @method componentWillReceiveProps changes state.isActive and state.text
+ * 
+ * @method handleClick - if this.state isActive is true runs callToggleArrows() callToggleButton, callToggleRotator and callUpdateBoard methods received in props from parent components
+ * 
+ */
+
 class PadButton extends React.Component {
     
     constructor(props){
