@@ -106,9 +106,12 @@ class Board extends React.Component {
         let toShift = tiles[tiles.length-1]
         let toUnshift;
 
+        //shift on the upper arrows
         if (this.state.newTileTop === 161) {
 
+            //first upper arrow
             if(this.state.newTileLeft === 462) {
+                let newPlayerTop = this.getPlayerShift(1,29,'down')
                 toUnshift = tiles[26];
                 toShift.rotation = (this.state.newTileRotation !== '') ? this.state.newTileRotation : toShift.rotation;
                 
@@ -121,10 +124,12 @@ class Board extends React.Component {
 
                 tiles[tiles.length] = toUnshift;
 
-                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random()})
+                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerTop: newPlayerTop, playerLeft: newPlayerTop === 416 ? 535 : this.state.playerLeft})
             }
 
+            //second upper arrow
             if(this.state.newTileLeft === 826) {
+                let newPlayerTop = this.getPlayerShift(3,31,'down')
                     toUnshift = tiles[28];
                     toShift.rotation = (this.state.newTileRotation !== '') ? this.state.newTileRotation : toShift.rotation;
                     
@@ -137,10 +142,12 @@ class Board extends React.Component {
 
                     tiles[tiles.length] = toUnshift;
 
-                     this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random()})
+                    this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerTop: newPlayerTop, playerLeft: newPlayerTop === 416 ? 905 : this.state.playerLeft})
             }
 
+            //third upper arrow
             if(this.state.newTileLeft === 1190) {
+                let newPlayerTop = this.getPlayerShift(5,33,'down')
                 toUnshift = tiles[30];
                 toShift.rotation = (this.state.newTileRotation !== '') ? this.state.newTileRotation : toShift.rotation;
                 
@@ -153,12 +160,16 @@ class Board extends React.Component {
 
                 tiles[tiles.length] = toUnshift;
 
-                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random()})
+                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerTop: newPlayerTop, playerLeft: newPlayerTop === 416 ? 1260 : this.state.playerLeft})
             }
         }
         
+        //shift on lower arrows
         if (this.state.newTileTop === 1241) {
+
+            //first lower arrow
             if(this.state.newTileLeft === 462){
+                let newPlayerTop = this.getPlayerShift(1,29,'up')
                 toUnshift = tiles[0];
                 toShift.rotation = (this.state.newTileRotation !== '') ? this.state.newTileRotation : toShift.rotation;
                 
@@ -171,26 +182,30 @@ class Board extends React.Component {
 
                 tiles[tiles.length] = toUnshift;
 
-                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random()})
+                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerTop: newPlayerTop, playerLeft: newPlayerTop === 1156 ? 540 : this.state.playerLeft})
             }
 
-             if(this.state.newTileLeft === 826) {
-                    toUnshift = tiles[2];
-                    toShift.rotation = (this.state.newTileRotation !== '') ? this.state.newTileRotation : toShift.rotation;
-                    
-                    tiles.splice(2, 1, tiles[8]);
-                    tiles.splice(8, 1, tiles[15]);
-                    tiles.splice(15, 1, tiles[22]);
-                    tiles.splice(22, 1, tiles[28]);
-                    tiles.splice(28, 1, toShift);
-                    tiles.pop()
+            //second lower arrow
+            if(this.state.newTileLeft === 826) {
+                let newPlayerTop = this.getPlayerShift(3,31,'up')
+                toUnshift = tiles[2];
+                toShift.rotation = (this.state.newTileRotation !== '') ? this.state.newTileRotation : toShift.rotation;
+                
+                tiles.splice(2, 1, tiles[8]);
+                tiles.splice(8, 1, tiles[15]);
+                tiles.splice(15, 1, tiles[22]);
+                tiles.splice(22, 1, tiles[28]);
+                tiles.splice(28, 1, toShift);
+                tiles.pop()
 
-                    tiles[tiles.length] = toUnshift;
+                tiles[tiles.length] = toUnshift;
 
-                     this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random()})
+                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerTop: newPlayerTop, playerLeft: newPlayerTop === 1156 ? 900 : this.state.playerLeft})
             }
-
+            
+            //third lower arrow
             if(this.state.newTileLeft === 1190) {
+                let newPlayerTop = this.getPlayerShift(5,33,'up')
                 toUnshift = tiles[4];
                 toShift.rotation = (this.state.newTileRotation !== '') ? this.state.newTileRotation : toShift.rotation;
                 
@@ -203,12 +218,17 @@ class Board extends React.Component {
 
                 tiles[tiles.length] = toUnshift;
 
-                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random()})
+                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerTop: newPlayerTop, playerLeft: newPlayerTop === 1156 ? 1260 : this.state.playerLeft})
             }
         }
 
+        //shift on the left arrows
         if(this.state.newTileLeft === 100) {
+
+            //first left arrow
             if(this.state.newTileTop === 523) {
+                let newPlayerLeft = this.getPlayerShift(7,13,'right');
+
                 toUnshift = tiles[11];
                 tiles.splice(11,1, tiles[10]);
                 for(let i = 10; i > 5; i--) {
@@ -219,11 +239,12 @@ class Board extends React.Component {
                 tiles.pop()
                 tiles[tiles.length] = toUnshift;
 
-                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random()})
+                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerLeft: newPlayerLeft, playerTop: newPlayerLeft === 360 ? 593 : this.state.playerTop })
             }
 
-
+            //second left arrow
             if(this.state.newTileTop === 887) {
+                let newPlayerLeft = this.getPlayerShift(21,27,'right');
                 toUnshift = tiles[25];
                 tiles.splice(25,1, tiles[24]);
                 for(let i = 24; i > 19; i--) {
@@ -234,12 +255,17 @@ class Board extends React.Component {
                 tiles.pop()
                 tiles[tiles.length] = toUnshift;
 
-                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random()})
+                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerLeft: newPlayerLeft, playerTop: newPlayerLeft === 360 ? 957 : this.state.playerTop })
             }
         }
         
+        //shift on the right arrows
         if(this.state.newTileLeft === 1554) {
+
+            //first right arrow
             if(this.state.newTileTop === 523) {
+                let newPlayerLeft = this.getPlayerShift(7,13,'left')
+
                 toUnshift = tiles[5];
                 tiles.splice(5,1, tiles[6]);
                 for(let i = 6; i < 11; i++) {
@@ -250,12 +276,12 @@ class Board extends React.Component {
                 tiles.pop()
                 tiles[tiles.length] = toUnshift;
 
-                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random()})
+                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerLeft: newPlayerLeft, playerTop: newPlayerLeft ===  1454 ? 593 : this.state.playerTop})
             }
-        }
 
-        if(this.state.newTileLeft === 1554) {
+            //second right arrow
             if(this.state.newTileTop === 887) {
+                let newPlayerLeft = this.getPlayerShift(21,27,'left')                
                 toUnshift = tiles[19];
                 tiles.splice(19,1, tiles[20]);
                 for(let i = 20; i < 25; i++) {
@@ -266,11 +292,54 @@ class Board extends React.Component {
                 tiles.pop()
                 tiles[tiles.length] = toUnshift;
 
-                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random()})
+                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerLeft: newPlayerLeft, playerTop: newPlayerLeft ===  1454 ? 954 : this.state.playerTop})
             }
+        }
+    }
+
+    getPlayerShift(firstTile, lastTile, direction) {  
+
+        let currentTile = this.findTile(this.state.playerLeft, this.state.playerLeft + this.state.playerWidth, this.state.playerTop, this.state.playerTop + this.state.playerHeight);
+        let shiftWidth = (direction === 'right' || direction ==='down') ? 60*3 : -60*3;
+        let initialPosition = (direction === 'right' || direction === 'left') ? this.state.playerLeft : this.state.playerTop;
+
+        if (direction === 'right' || direction === 'down') {
+            if (typeof currentTile === 'number'){
+                if (currentTile>=firstTile && currentTile < lastTile) {
+                    return initialPosition + shiftWidth;
+                } else if (currentTile === lastTile) {
+                        return direction === 'right' ? 360 : 416
+                }
+            } else if (currentTile[0]>=firstTile && currentTile[1] < lastTile) {
+                return initialPosition + shiftWidth;
+            } else if (currentTile[1] === lastTile){
+                    return direction === 'right' ? 360 : 416
+                }
+            return direction === 'right' ? this.state.playerLeft : this.state.playerTop
+        }
+        
+        else if (direction === 'left' || direction === 'up') {
+            if (typeof currentTile === 'number'){
+                if (currentTile>firstTile && currentTile <= lastTile) {
+                    return initialPosition + shiftWidth;
+                } else if (currentTile === firstTile) {
+                    return direction === 'left' ? 1454 : 1156;
+                } 
+            } else if (currentTile[0]>firstTile && currentTile[1] <= lastTile) {
+                return initialPosition + shiftWidth;
+            } else if (currentTile[1] === firsTile){
+                return direction === 'left' ? 1454 : 1156;
+            }
+            return direction === 'left' ? this.state.playerLeft : this.state.playerTop;
         }
 
     }
+
+    getVerticalPlayerShift() {
+
+    }
+
+
 
     rotateTile = (direction) => {
         let tiles = this.state.tiles.slice();
@@ -1038,7 +1107,7 @@ class Board extends React.Component {
 
         let tilesRow5 = row5.map(tile => <Tile shape={tile.shape} treasure={tile.treasure} rotation={tile.rotation} initialX={0} initialY={0} index={index++} isdisplayed={tile.isDisplayed} sendObstacles={this.locateObstacles}key={key++}/>)
 
-        console.log('top left',this.state.newTileLeft, this.state.newTileTop)
+        console.log(this.state.playerLeft)
 
         if (this.state.tiles.length !== 0){       
             return(
