@@ -84,6 +84,8 @@ class Board extends React.Component {
             playerLeft: this.props.initialLeft + 70,
             playerWidth: 30,
             playerHeight: 30,
+            targets:[1,2,3],
+            shifts: 10
         }
         this.obstacleMap = []; //Array of objects representing top and left positions of every obstacle (wall) on the board, created when Board component is mounted or updated
         this.canPlayerMove = true; //if false disables player's sprite ability to move
@@ -97,6 +99,10 @@ class Board extends React.Component {
         this.generateTiles();
     }
 
+    componentWillUnmount() {
+        document.removeEventListener(this.movePlayer);
+        clearInterval(this.interval);
+    }
     toggleArrows = () => {
         this.state.areArrowsActive ? this.setState({areArrowsActive: false}) : this.setState({areArrowsActive: true})
     }
@@ -295,6 +301,8 @@ class Board extends React.Component {
                 this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerLeft: newPlayerLeft, playerTop: newPlayerLeft ===  1454 ? 954 : this.state.playerTop})
             }
         }
+
+        this.setState({shifts: this.state.shifts-1})
     }
 
     getPlayerShift(firstTile, lastTile, direction) {  
@@ -306,12 +314,28 @@ class Board extends React.Component {
         if (direction === 'right' || direction === 'down') {
             if (typeof currentTile === 'number'){
                 if (currentTile>=firstTile && currentTile < lastTile) {
-                    return initialPosition + shiftWidth;
+                    if (direction==='right') {
+                        return initialPosition + shiftWidth;
+                    } else {
+                        for (let i = lastTile-7; i>= firstTile; i -=7){
+                            if (currentTile === i) {
+                                return initialPosition + shiftWidth
+                            }
+                        }
+                    }
                 } else if (currentTile === lastTile) {
                         return direction === 'right' ? 360 : 416
                 }
             } else if (currentTile[0]>=firstTile && currentTile[1] < lastTile) {
-                return initialPosition + shiftWidth;
+                if (direction === 'right'){
+                    return initialPosition + shiftWidth;
+                } else {
+                    for (let i = lastTile-7; i>= firstTile; i -=7){
+                        if (currentTile[0] === i) {
+                            return initialPosition + shiftWidth
+                        }
+                    }
+                }
             } else if (currentTile[1] === lastTile){
                     return direction === 'right' ? 360 : 416
                 }
@@ -321,13 +345,29 @@ class Board extends React.Component {
         else if (direction === 'left' || direction === 'up') {
             if (typeof currentTile === 'number'){
                 if (currentTile>firstTile && currentTile <= lastTile) {
-                    return initialPosition + shiftWidth;
+                    if (direction === 'left'){
+                        return initialPosition + shiftWidth;
+                    } else {
+                        for (let i = firstTile+7; i>= lastTile; i +=7){
+                            if (currentTile === i) {
+                                return initialPosition + shiftWidth
+                            }
+                        } 
+                    }
                 } else if (currentTile === firstTile) {
                     return direction === 'left' ? 1454 : 1156;
                 } 
             } else if (currentTile[0]>firstTile && currentTile[1] <= lastTile) {
-                return initialPosition + shiftWidth;
-            } else if (currentTile[1] === firsTile){
+                if (direction === 'left') {
+                    return initialPosition + shiftWidth;
+                } else {
+                    for (let i = firstTile+7; i>= lastTile; i +=7){
+                        if (currentTile[1] === i) {
+                            return initialPosition + shiftWidth
+                        }
+                    } 
+                }
+            } else if (currentTile[1] === firstTile){
                 return direction === 'left' ? 1454 : 1156;
             }
             return direction === 'left' ? this.state.playerLeft : this.state.playerTop;
@@ -335,9 +375,7 @@ class Board extends React.Component {
 
     }
 
-    getVerticalPlayerShift() {
-
-    }
+  
 
 
 
@@ -1076,14 +1114,14 @@ class Board extends React.Component {
 
             row1.push({
                 shape: 'turn',
-                treasure: 'B',
+                treasure: 0,
                 rotation: 1,
                 isDisplayed: true
             })
 
             row5.unshift({
                 shape: 'turn',
-                treasure: 'C',
+                treasure: 0,
                 rotation: 3,
                 isDisplayed: true
             })
@@ -1138,7 +1176,7 @@ class Board extends React.Component {
                     </div>
                     <Tile shape={this.state.tiles[this.state.tiles.length-1].shape} treasure={this.state.tiles[this.state.tiles.length-1].treasure} rotation={this.state.tiles[this.state.tiles.length-1].rotation} index="last" sendObstacles={this.locateObstacles} isNewOnBoard={true} isDisplayed={this.state.displayNewTile} left={this.state.newTileLeft} top={this.state.newTileTop} key={key++}/> 
 
-                    <PlayerPanel tile={this.state.tiles[this.state.tiles.length-1]} callRotateTile={this.rotateTile} key={this.state.key} callToggleArrows={this.toggleArrows} callUpdateBoard={this.updateBoard}/>
+                    <PlayerPanel tile={this.state.tiles[this.state.tiles.length-1]} callRotateTile={this.rotateTile} key={this.state.key} callToggleArrows={this.toggleArrows} callUpdateBoard={this.updateBoard} targets={this.state.targets} shifts={this.state.shifts}/>
                 </div>
             );
         } else {
