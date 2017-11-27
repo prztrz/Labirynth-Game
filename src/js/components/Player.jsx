@@ -19,6 +19,8 @@ class Player extends React.Component {
             top: this.props.top,
             width: this.props.width,
             height: this.props.height,
+            img: this.props.img,
+            rotate: this.props.rotate
         }
     }
 
@@ -30,12 +32,25 @@ class Player extends React.Component {
         if (this.props.top !== nextProps.top) {
             this.setState({top: nextProps.top})
         }
+
+        if (this.props.img !== nextProps.img) {
+            this.setState({
+                img: nextProps.img
+            })
+        }
+
+        if (this.props.rotate !== nextProps.rotate) {
+            this.setState({
+                rotate: nextProps.rotate
+            })
+        }
     }
 
     
     render(){
+        console.log(this.state.rotate)
         return(
-            <div className='player' style={{height: this.state.height + 'px', width: this.state.width + 'px', position: 'absolute', left: this.state.left + 'px', top: this.state.top + 'px', zIndex: '1', backgroundImage: `url(./../../images/sprites/mario/1.png)`}} />
+            <div className='player' style={{height: this.state.height + 'px', width: this.state.width + 'px', left: this.state.left + 'px', top: this.state.top + 'px',  transform: `rotateY(${this.state.rotate}deg)`, backgroundImage: `url(./../../images/sprites/mario/${this.state.img}.png)`}} />
         );
     }
 }

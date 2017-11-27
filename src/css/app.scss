@@ -78,14 +78,45 @@ body {
 .section-game {
     background-color: $main-background;
 
+    .game-over {
+        background-color: rgba(0,0,0,0.8);
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        left: 0;
+        bottom: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 4;
+
+        .box {
+            width: 100vw;
+            background-color: #000;
+            color: #efefef;
+            height: 245px;
+        }
+
+        h2 {
+            width: 100%;
+            text-align: center;
+            font-size: 50px;
+        }
+
+        p {
+            text-align: center;
+        }
+    }
+
     .player {
-        height: 30px;
-        width: 30px;
         position: absolute;
         z-index: 1;
-        background-image: url(./../../images/sprites/mario/1.png);
-        background-size: 137%;
-        background-position: -4px 28px;
+        background-size: 140%;
+        background-position-y: bottom;
+        background-position-x: -8px;
+        background-repeat: no-repeat;
+        //transform: rotateY(180deg)
     }
 
 
@@ -205,7 +236,7 @@ body {
         
 
         .player-pad {
-            width: 62%;
+            width: 1140px;
             height: 370px;
             background-color: #d4d4d4;
             padding: 10px 35px;
@@ -268,7 +299,7 @@ body {
             .target{
                 display: inline-block;
                 height: 100px;
-                width: 90px;
+                min-width: 90px;
                 text-align: center;
                 background-color: #813f17;
                 margin-top: 25px;

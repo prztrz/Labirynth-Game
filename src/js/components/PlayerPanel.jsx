@@ -16,18 +16,20 @@ class InfoTable extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if(this.state.timer !== nextProps.timer) {
+        if(this.state.targets !== nextProps.targets) {
             this.setState({
-                timer: nextProps.timer
+                targets: nextProps.targets
             })
             
         }
     }
 
     render(){
-                
-        if (this.seconds === 60) {
-            this.seconds = 0;
+        let  targets = this.state.targets.slice()     
+        let finishPrompt = ['Go', 'to', 'castle!']
+        
+        for (let i = 0; i<3; i++) {
+            (typeof targets[i] !== 'number' )&& (targets[i] = finishPrompt[i])
         }
         return(
             <div className="pad-info-table">
@@ -38,9 +40,9 @@ class InfoTable extends React.Component {
                     Find:
                 </div>
                 <div style={{textAlign: 'center'}}>
-                    <span className="target" >{this.state.targets[0]}</span>
-                    <span className="target">{this.state.targets[1]}</span>
-                    <span className="target">{this.state.targets[2]}</span>
+                    <span className="target" >{targets[0]}</span>
+                    <span className="target">{targets[1]}</span>
+                    <span className="target">{targets[2]}</span>
                 </div>
            </div>
         );

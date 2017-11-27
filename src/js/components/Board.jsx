@@ -12,6 +12,31 @@ import {Rotator} from "./Rotator.jsx";
 import { PlayerPanel } from "./PlayerPanel.jsx";
 
 
+class GameOver extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            isGameOver: false,
+            isWin: false
+        }
+    }
+    render(){
+        if (this.state.isGameOver || this.state.isWin){
+            return(
+                <div className='game-over'>
+                    <div className='box'>
+                        <h2>Game Over</h2>
+                        <p>You run out of shifts!</p>
+                        <p>Try again?</p>
+                    </div>
+                </div>
+            );
+        } else {
+            return null;
+        }
+    }
+}
+
 /**
  * @class Board redners the game board and controls game-flow
  * 
@@ -82,9 +107,12 @@ class Board extends React.Component {
             tiles: [], //Array of objects representing tiles on the board, created when Board component is mounted or updated
             playerTop: this.props.initialTop + 70,
             playerLeft: this.props.initialLeft + 70,
-            playerWidth: 30,
-            playerHeight: 30,
-            targets:[1,2,3],
+            playerWidth: 40,
+            playerHeight: 40,
+            playerImg: 1,
+            playerRotate: 0,
+            targets:[],
+            targetTiles: [],
             shifts: 10
         }
         this.obstacleMap = []; //Array of objects representing top and left positions of every obstacle (wall) on the board, created when Board component is mounted or updated
@@ -93,10 +121,12 @@ class Board extends React.Component {
 
     componentWillMount() {
         document.addEventListener('keydown', this.movePlayer)
+        this.setState({targets: this.generateTargets()})
+
     }
 
     componentDidMount() {
-        this.generateTiles();
+        this.generateTiles()
     }
 
     componentWillUnmount() {
@@ -130,7 +160,7 @@ class Board extends React.Component {
 
                 tiles[tiles.length] = toUnshift;
 
-                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerTop: newPlayerTop, playerLeft: newPlayerTop === 416 ? 535 : this.state.playerLeft})
+                this.setState({tiles: tiles, targetTiles: this.getTargetTiles(tiles), key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerTop: newPlayerTop, playerLeft: newPlayerTop === 416 ? 535 : this.state.playerLeft})
             }
 
             //second upper arrow
@@ -148,7 +178,7 @@ class Board extends React.Component {
 
                     tiles[tiles.length] = toUnshift;
 
-                    this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerTop: newPlayerTop, playerLeft: newPlayerTop === 416 ? 905 : this.state.playerLeft})
+                    this.setState({tiles: tiles, targetTiles: this.getTargetTiles(tiles), key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerTop: newPlayerTop, playerLeft: newPlayerTop === 416 ? 905 : this.state.playerLeft})
             }
 
             //third upper arrow
@@ -166,7 +196,7 @@ class Board extends React.Component {
 
                 tiles[tiles.length] = toUnshift;
 
-                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerTop: newPlayerTop, playerLeft: newPlayerTop === 416 ? 1260 : this.state.playerLeft})
+                this.setState({tiles: tiles, targetTiles: this.getTargetTiles(tiles), key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerTop: newPlayerTop, playerLeft: newPlayerTop === 416 ? 1260 : this.state.playerLeft})
             }
         }
         
@@ -188,7 +218,7 @@ class Board extends React.Component {
 
                 tiles[tiles.length] = toUnshift;
 
-                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerTop: newPlayerTop, playerLeft: newPlayerTop === 1156 ? 540 : this.state.playerLeft})
+                this.setState({tiles: tiles, targetTiles: this.getTargetTiles(tiles), key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerTop: newPlayerTop, playerLeft: newPlayerTop === 1156 ? 540 : this.state.playerLeft})
             }
 
             //second lower arrow
@@ -206,7 +236,7 @@ class Board extends React.Component {
 
                 tiles[tiles.length] = toUnshift;
 
-                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerTop: newPlayerTop, playerLeft: newPlayerTop === 1156 ? 900 : this.state.playerLeft})
+                this.setState({tiles: tiles, targetTiles: this.getTargetTiles(tiles), key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerTop: newPlayerTop, playerLeft: newPlayerTop === 1156 ? 900 : this.state.playerLeft})
             }
             
             //third lower arrow
@@ -224,7 +254,7 @@ class Board extends React.Component {
 
                 tiles[tiles.length] = toUnshift;
 
-                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerTop: newPlayerTop, playerLeft: newPlayerTop === 1156 ? 1260 : this.state.playerLeft})
+                this.setState({tiles: tiles, targetTiles: this.getTargetTiles(tiles), key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerTop: newPlayerTop, playerLeft: newPlayerTop === 1156 ? 1260 : this.state.playerLeft})
             }
         }
 
@@ -245,7 +275,7 @@ class Board extends React.Component {
                 tiles.pop()
                 tiles[tiles.length] = toUnshift;
 
-                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerLeft: newPlayerLeft, playerTop: newPlayerLeft === 360 ? 593 : this.state.playerTop })
+                this.setState({tiles: tiles, targetTiles: this.getTargetTiles(tiles), key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerLeft: newPlayerLeft, playerTop: newPlayerLeft === 360 ? 593 : this.state.playerTop })
             }
 
             //second left arrow
@@ -261,7 +291,7 @@ class Board extends React.Component {
                 tiles.pop()
                 tiles[tiles.length] = toUnshift;
 
-                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerLeft: newPlayerLeft, playerTop: newPlayerLeft === 360 ? 957 : this.state.playerTop })
+                this.setState({tiles: tiles, targetTiles: this.getTargetTiles(tiles), key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerLeft: newPlayerLeft, playerTop: newPlayerLeft === 360 ? 957 : this.state.playerTop })
             }
         }
         
@@ -282,7 +312,7 @@ class Board extends React.Component {
                 tiles.pop()
                 tiles[tiles.length] = toUnshift;
 
-                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerLeft: newPlayerLeft, playerTop: newPlayerLeft ===  1454 ? 593 : this.state.playerTop})
+                this.setState({tiles: tiles, targetTiles: this.getTargetTiles(tiles), key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerLeft: newPlayerLeft, playerTop: newPlayerLeft ===  1454 ? 593 : this.state.playerTop})
             }
 
             //second right arrow
@@ -298,7 +328,7 @@ class Board extends React.Component {
                 tiles.pop()
                 tiles[tiles.length] = toUnshift;
 
-                this.setState({tiles: tiles, key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerLeft: newPlayerLeft, playerTop: newPlayerLeft ===  1454 ? 954 : this.state.playerTop})
+                this.setState({tiles: tiles, targetTiles: this.getTargetTiles(tiles), key: Math.random(), displayNewTile: false, boardKey: Math.random(), playerLeft: newPlayerLeft, playerTop: newPlayerLeft ===  1454 ? 954 : this.state.playerTop})
             }
         }
 
@@ -461,6 +491,7 @@ class Board extends React.Component {
 
 
         let currentTile = this.findTile(currPlayerPos.leftBound, currPlayerPos.rightBound, currPlayerPos.topBound, currPlayerPos.bottomBound);
+        //this.findGrid(currPlayerPos.leftBound, currPlayerPos.rightBound, currPlayerPos.topBound, currPlayerPos.bottomBound)
         let currentMap;
         let mapOnRight;
         let mapOnLeft;
@@ -781,6 +812,88 @@ class Board extends React.Component {
         }
     }
 
+    checkPlayerOnTreasure() {
+        let currentTile = this.findTile(this.state.playerLeft, this.state.playerLeft + this.state.playerWidth, this.state.playerTop, this.state.playerTop + this.state.playerHeight);
+
+        if (this.isPlayerOnTargetTile(currentTile) && this.isPlayerOnCentralGrid(this.state.playerLeft, this.state.playerLeft + this.state.playerWidth, this.state.playerTop, this.state.playerTop + this.state.playerHeight)) {
+            let targets = this.state.targets.slice();
+            let tiles = this.state.tiles.slice();
+            let currentTileIndex = this.findCurrentTileIndexInArray(currentTile);
+            let currentTileObject = tiles[currentTileIndex];
+            let capturedTreasure = currentTileObject.treasure;
+            let capturedTreasureIndex = this.state.targets.indexOf(capturedTreasure);
+
+            targets.splice(capturedTreasureIndex, 1)
+            console.log(tiles, targets)
+
+            currentTileObject.treasure = 0;
+            tiles.splice(currentTileIndex, 1, currentTileObject);
+
+            this.setState({
+                tiles: tiles,
+                targetTiles: this.getTargetTiles(tiles),
+                targets: targets,
+                boardKey: Math.random(),
+                key: Math.random()
+
+            })
+        }
+    }
+
+    isPlayerOnTargetTile(currentTile) {
+        let targetTilesOnBoard = this.state.targetTiles.map(tile => this.findTileObjectOnBoard(tile));
+
+        return targetTilesOnBoard.indexOf(currentTile) !== -1 
+
+
+    }
+
+    isPlayerOnCentralGrid(leftBound, rightBound, topBound, bottomBound) {
+        let isOnWidth = false;
+        let isOnHeight = false;
+        for(let i = this.state.initialLeft+60; i <= (this.state.initialLeft+60)*7; i+=180 ) {
+            if (leftBound >= i && rightBound <= i + 60) {
+                isOnWidth = true;
+            }
+        }
+
+        for (let j = this.state.initialTop+60; j <= (this.state.initialTop+60)*5; j+=180) {
+            if (topBound >= j && bottomBound <= j+60) {
+                isOnHeight = true;
+            }
+        }
+
+        return (isOnHeight && isOnWidth);
+    }
+
+    findTileObjectOnBoard(currentTileObject) {
+        if (currentTileObject <= 4) {
+            return currentTileObject + 1
+        }
+
+        if (currentTileObject <= 25) {
+            return currentTileObject + 2
+        }
+
+        return currentTileObject+3;
+    }
+
+    findCurrentTileIndexInArray (currentTile) {
+        if (currentTile !== 0 && currentTile !==6 && currentTile !== 28 && currentTile !== 34) {
+            if (currentTile < 6) {
+                return currentTile - 1
+            }
+
+            if (currentTile <= 28) {
+                return currentTile - 2
+            }
+
+            return currentTile-3;
+        } else {
+            return null
+        }
+    }
+
     locateObstacles = (tileIndex, grid) => {
        
         let tile = {index: tileIndex}
@@ -952,31 +1065,42 @@ class Board extends React.Component {
             break;
 
         }
+
+        this.checkPlayerOnTreasure(); 
     }
 
     moveUp = () => {
+        let img = (this.state.playerImg === 7) ? 1 : this.state.playerImg+1
         this.setState({
             playerTop: this.state.playerTop - 5,
-            img: this.state.img+1
+            playerImg: img
         }) 
     }
 
     moveDown = () => {
+        let img = (this.state.playerImg === 7) ? 1 : this.state.playerImg+1
         this.setState({
             playerTop: this.state.playerTop + 5,
+            playerImg: img
         }) 
     }
 
     moveLeft = () => {
+        let img = (this.state.playerImg === 7) ? 1 : this.state.playerImg+1
         this.setState({
+            playerRotate: 180,
+            playerImg: img,
             playerLeft: this.state.playerLeft - 5
         })
         
     }
 
     moveRight = () => {
+        let img = (this.state.playerImg === 7) ? 1 : this.state.playerImg+1
         this.setState({
-            playerLeft: this.state.playerLeft + 5
+            playerLeft: this.state.playerLeft + 5,
+            playerImg: img,
+            playerRotate: 0
         }) 
     }
 
@@ -1012,8 +1136,25 @@ class Board extends React.Component {
         return treasures;
     }
 
+    generateTargets() {
+        let target1 = Math.floor(Math.random()*16)+1
+        let target2 = Math.floor(Math.random()*16)+1
+        let target3 = Math.floor(Math.random()*16)+1
+
+        while(target1 === target2) {
+            target2 = Math.floor(Math.random()*16)+1;
+        }
+
+        while (target1 === target3 || target2 === target3) {
+            let target3 = Math.floor(Math.random()*16)+1
+        }
+
+        return [target1, target2, target3];
+    }
+
     generateTiles() {
         let tiles = []
+        let targetTiles = [];
         let treasures = this.generateTreasures();
 
         this.generateTileShapes().forEach((tile, i) => {
@@ -1051,11 +1192,22 @@ class Board extends React.Component {
             tiles.push(currentTile);
         })
 
-        tiles = this.shuffle(tiles)      
+        tiles = this.shuffle(tiles)
 
         this.setState({
-            tiles: tiles
+            tiles: tiles,
+            targetTiles: this.getTargetTiles(tiles)
         })
+    }
+
+    getTargetTiles(tiles) {
+        let targetTiles = tiles.map(tile => {
+            if (this.state.targets.indexOf(tile.treasure) !== -1) {
+                return tiles.indexOf(tile)
+            }
+        })
+
+        return targetTiles.filter(tile => tile !== undefined)
     }
 
     shuffle(arr) {
@@ -1145,12 +1297,13 @@ class Board extends React.Component {
 
         let tilesRow5 = row5.map(tile => <Tile shape={tile.shape} treasure={tile.treasure} rotation={tile.rotation} initialX={0} initialY={0} index={index++} isdisplayed={tile.isDisplayed} sendObstacles={this.locateObstacles}key={key++}/>)
 
-        console.log(this.state.playerLeft)
+        console.log(this.state.targets)
 
         if (this.state.tiles.length !== 0){       
             return(
                 <div className="game-panel">
-                    <Player top={this.state.playerTop} left={this.state.playerLeft} width={this.state.playerWidth}height={this.state.playerHeight}/>
+                    <GameOver />
+                    <Player top={this.state.playerTop} left={this.state.playerLeft} width={this.state.playerWidth}height={this.state.playerHeight} img={this.state.playerImg} rotate={this.state.playerRotate}/>
                     <div className='row clearfix'>
                         <Arrow direction="down" col={2} insertTile={this.insertTile} isActive={this.state.areArrowsActive}/>
                         <Arrow direction="down" col={4} insertTile={this.insertTile} isActive={this.state.areArrowsActive}/>
