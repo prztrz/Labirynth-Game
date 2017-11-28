@@ -48,7 +48,6 @@ class Player extends React.Component {
 
     
     render(){
-        console.log(this.state.rotate)
         return(
             <div className='player' style={{height: this.state.height + 'px', width: this.state.width + 'px', left: this.state.left + 'px', top: this.state.top + 'px',  transform: `rotateY(${this.state.rotate}deg)`, backgroundImage: `url(./../../images/sprites/mario/${this.state.img}.png)`}} />
         );

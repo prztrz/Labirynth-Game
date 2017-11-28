@@ -4,50 +4,8 @@ import ReactDOM from 'react-dom';
 import { Rotator } from "./Rotator.jsx";
 import { PadButton } from "./PadButton.jsx";
 import { Tile } from "./Tile.jsx";
+import {InfoTable} from "./InfoTable.jsx"
 
-class InfoTable extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            targets: this.props.targets,
-            shifts: this.props.shifts
-        }
-        this.seconds = 0;
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if(this.state.targets !== nextProps.targets) {
-            this.setState({
-                targets: nextProps.targets
-            })
-            
-        }
-    }
-
-    render(){
-        let  targets = this.state.targets.slice()     
-        let finishPrompt = ['Go', 'to', 'castle!']
-        
-        for (let i = 0; i<3; i++) {
-            (typeof targets[i] !== 'number' )&& (targets[i] = finishPrompt[i])
-        }
-        return(
-            <div className="pad-info-table">
-                <div className='info-cell'>
-                    Shifts: {this.state.shifts}
-                </div>
-                <div className="info-cell">
-                    Find:
-                </div>
-                <div style={{textAlign: 'center'}}>
-                    <span className="target" >{targets[0]}</span>
-                    <span className="target">{targets[1]}</span>
-                    <span className="target">{targets[2]}</span>
-                </div>
-           </div>
-        );
-    }
-}
 
 /**
  * @class PlayerPanel represents the game control panel
@@ -117,6 +75,7 @@ class PlayerPanel extends React.Component {
                             <InfoTable targets={this.state.targets} shifts={this.state.shifts}/>
                         </div>
                     </div>
+                    <div className="copyright-info"><small>Przemysław Trzepiński &copy; 2017. <a href='https://opensource.org/licenses/MIT' target="_blank">MIT licence</a> - use it however you want, just don't say you are an author, please!</small></div>
                 </div>
             </div>
         );

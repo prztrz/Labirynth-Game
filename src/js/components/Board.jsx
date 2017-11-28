@@ -10,52 +10,8 @@ import {PadButton} from "./PadButton.jsx"
 import {RotateButton} from './RotateButton.jsx'
 import {Rotator} from "./Rotator.jsx";
 import { PlayerPanel } from "./PlayerPanel.jsx";
+import {GameOver} from "./GameOver.jsx";
 
-
-class GameOver extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            isGameOver: this.props.isGameOver,
-            isWin: this.props.isWin
-        }
-    }
-
-    componentWillReceiveProps (nextProps) {
-        if (this.state.isGameOver !== nextProps.isGameOver) {
-            this.setState({isGameOver: nextProps.isGameOver})
-        }
-
-        if (this.state.iswin !== nextProps.isWin) {
-            this.setState({iswin: nextProps.isWin})
-        }
-    }
-    render(){
-        if (this.state.isGameOver){
-            return(
-                <div className='game-over'>
-                    <div className='box'>
-                        <h2>Game Over</h2>
-                        <p>You ran out of shifts!</p>
-                        <p>Try again?</p>
-                    </div>
-                </div>
-            );
-        }
-        if (this.state.isWin) {
-            return(
-                <div className='game-over'>
-                    <div className='box'>
-                        <h2>You Win!</h2>
-                        <p>Try again?</p>
-                    </div>
-                </div>
-            );
-        } else {
-            return null;
-        }
-    }
-}
 
 /**
  * @class Board redners the game board and controls game-flow
@@ -68,7 +24,14 @@ class GameOver extends React.Component {
  * 
  * @method toggleArrows - toggles activity of game arrows when confirm position and confim rotation buttons are clicked
  * 
- * @method updateBoard - updates game board whenever the location of tiles is changed: finds shifted-in tile position, then changes indexes of tiles objects from corresponding row in tiles array to create the row with new tile location, subsequently removes last index from tiles array (representing current shifted-in tile) and pushes object representing shifted-out tile - to become next shifted-in tile. Switches out the shifted-in tile visibility when all actions are done.
+ * @method updateBoard - Runned whenever the location of tiles is changed. Sets this.state.isGameOver to true (finishes the game) if player has no shifts left. If player has shifts the method updates game board: finds shifted-in tile position, then changes indexes of tiles objects from corresponding row or column in tiles array to create the row or column with new tile locations, subsequently removes last index from tiles array (representing current shifted-in tile) and pushes object representing shifted-out tile - to become next shifted-in tile. Switches out the shifted-in tile visibility when all actions are done.
+ * 
+ * @method getPlayerShift - If the current tile(s) the player's sprite is currently located on are within the shifted row or column changes the player's sprite position in corresponding direction. If the player's sprite is on the shifted-out tile, changes its position to locate it on shifted-in tile
+ * 
+ *      @param {number} firstTile - the number of first tile changing position in the row or column due to shifting new tile
+ *      @param {number} lastTile - the number of last tile changing position in the row or column due to shifting new tile
+ *      @param {string} direction - the direction of shifting-in new tile (left, right up down)
+ *      @returns {number} player position after the shift
  * 
  * @method rotateTile - rotates the shifted-in tile
  *      @param {string} direction - direction of rotating sent by RotateButon component
@@ -82,7 +45,31 @@ class GameOver extends React.Component {
  *      @param {string} key - represents pressed key
  * 
  * @method findTile - find the tile or tiles on which the player's sprite is currently located
+ *      @param {number} leftBound - left position of left boundary of player's sprite object
+ *      @param {number} rightBound - left position of right boundary of player's sprite object
+ *      @param {number} topBound - top position of top boundary of player's sprite object
+ *      @param {number} bottomBound - top position of bottom boundary of player's sprite object
  *      @returns the number or two numbers array representing the index or indexes of tiles array corresponding to the tile(s) the player's sprite is currently located on
+ * 
+ * @method checkPlayerOnTreasure - checks the collision of player's sprite with one of the treasures from this.state.targets array. If the collision is detected removes the treasure from its tile and from this.state.targets array.
+ * 
+ * @method isPlayerOnTargetTile - checks if the player's sprite is located on tile containing treasure from this.state.targets array
+ *      @param {number} currentTile - number of tile the player's sprite is currently located on
+ *      @returns {boolean} true is the player's sprite is located on tile containing the tresure from this.state.targets array
+ * 
+ * @method isPlayerOnCentralGrid - checks if the player's sprite is located on central grid component of current tile
+ *      @param {number} leftBound - left position of left boundary of player's sprite object
+ *      @param {number} rightBound - left position of right boundary of player's sprite object
+ *      @param {number} topBound - top position of top boundary of player's sprite object
+ *      @param {number} bottomBound - top position of bottom boundary of player's sprite object
+ *      @returns {boolean} true if the player's sprite is located on central grid component of current tile the player's sprite is on
+ * 
+ * @method findTileObjectOnBoard - finds the number of specified tile object index from this.state.tiles array on the board - the number of tile on board is counted from 0 to 34 from left to right from top to bottom row.
+ *      @param {number} currentTileObject - index of current tile object in this.state.tiles array
+ *      @returns {number} - number of tile build on the board based on specified object in this.state.tiles.array
+ * 
+ * @method findCurrentTileIndexInArray  - Basing on the tile the player's sprite is currently located on finds the index of corresponding tile object in this.state.tiles array.
+ *      @param {number} - index of tile object in the this.state.tiles array 
  * 
  * @method locateObstacles - creates object containing information about boundaries position of all obstacles (walls) in the tile depending on its grid
  *      @param {number} index - index of current tile the obstacles (walls) are being located on
@@ -93,10 +80,14 @@ class GameOver extends React.Component {
  * 
  * @method movePlayer - depending on pressed key runs this.collisionControl with appropriate parameter and if this.canPlayerMove is true runs method moving player's sprite in corresponding direction
  * 
- * @method moveUp - changes player's sprite position by 5px up
- * @method moveDown - changes player's sprite position by 5px down
- * @method moveLeft - changes player's sprite position by 5px left
- * @method moveRight - changes player's sprite position by 5px right
+ * @method moveUp - changes player's sprite top position by -5px and player's sprite image
+ * 
+ * @method moveDown - changes player's sprite top position by 5px and player's sprite image
+ * 
+ * @method moveLeft - changes player's sprite left position by -5px, player's sprite image and player's sprite Y-roation
+ * @method moveRight - changes player's sprite left position by 5px, player's sprite image and player's sprite Y-roation
+ * 
+ * @method checkWin - checks if the player win the game by collecting all treasures from  this.state.targets array and being located on the finish gird - central grid of last tile on board
  * 
  * @method generateTileShapes 
  *      @returns array of strings representing the shapes of tiles in the game
@@ -430,10 +421,6 @@ class Board extends React.Component {
         }
 
     }
-
-  
-
-
 
     rotateTile = (direction) => {
         let tiles = this.state.tiles.slice();

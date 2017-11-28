@@ -107,6 +107,11 @@ body {
         p {
             text-align: center;
         }
+
+        a {
+            color: #efefef;
+            text-decoration: none;
+        }
     }
 
     .player {
@@ -244,6 +249,20 @@ body {
             bottom: 0;
             z-index: 2;
             transform: translateX(5.8%);
+
+            .copyright-info {
+                padding-top: 5px;
+                text-align: center;
+
+                small {
+                    font-size: 8px;
+                    color: darken(darkgray, 30%);
+                }
+
+                a {
+                    color: inherit;
+                }
+            }
         }
     
         .pad-body {
