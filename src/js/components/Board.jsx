@@ -141,11 +141,21 @@ class Board extends React.Component {
 
     componentDidMount() {
         this.generateTiles()
+        
     }
 
     componentWillUnmount() {
         document.removeEventListener(this.movePlayer);
         clearInterval(this.interval);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if(this.state.initialTop !== nextProps.initialTop) {
+            this.setState({initialTop: nextProps.initialTop, playerTop: nextProps.initialTop + 70})
+        } 
+        if (this.state.initialLeft !== nextProps.initialLeft) {
+            this.setState({initialLeft: nextProps.initialLeft, playerLeft: nextProps.initialLeft + 70 })
+        }
     }
     toggleArrows = () => {
         this.state.areArrowsActive ? this.setState({areArrowsActive: false}) : this.setState({areArrowsActive: true})
@@ -1317,6 +1327,8 @@ class Board extends React.Component {
 
         let tilesRow5 = row5.map(tile => <Tile shape={tile.shape} treasure={tile.treasure} rotation={tile.rotation} initialX={0} initialY={0} index={index++} isdisplayed={tile.isDisplayed} sendObstacles={this.locateObstacles}key={key++}/>)
 
+
+        console.log('lefttop',this.state.initialLeft, this.state.initialTop)
 
         if (this.state.tiles.length !== 0){       
             return(

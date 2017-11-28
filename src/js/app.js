@@ -23328,8 +23328,48 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SectionGame = function (_React$Component) {
-    _inherits(SectionGame, _React$Component);
+var Container = function (_React$Component) {
+    _inherits(Container, _React$Component);
+
+    function Container(props) {
+        _classCallCheck(this, Container);
+
+        var _this = _possibleConstructorReturn(this, (Container.__proto__ || Object.getPrototypeOf(Container)).call(this, props));
+
+        _this.state = { top: '', left: '' };
+        return _this;
+    }
+
+    _createClass(Container, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var top = _reactDom2.default.findDOMNode(this).getBoundingClientRect().y;
+            var left = _reactDom2.default.findDOMNode(this).getBoundingClientRect().x;
+
+            console.log(top, left);
+
+            this.setState({
+                top: top,
+                left: left
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            console.log('top,left', this.state.top, this.state.left);
+            return _react2.default.createElement(
+                'div',
+                { className: 'container clearfix' },
+                _react2.default.createElement(_Board.Board, { initialTop: this.state.top + 210, initialLeft: this.state.left })
+            );
+        }
+    }]);
+
+    return Container;
+}(_react2.default.Component);
+
+var SectionGame = function (_React$Component2) {
+    _inherits(SectionGame, _React$Component2);
 
     function SectionGame() {
         _classCallCheck(this, SectionGame);
@@ -23340,14 +23380,11 @@ var SectionGame = function (_React$Component) {
     _createClass(SectionGame, [{
         key: 'render',
         value: function render() {
+
             return _react2.default.createElement(
                 'section',
                 { className: 'section-game' },
-                _react2.default.createElement(
-                    'div',
-                    { className: 'container clearfix' },
-                    _react2.default.createElement(_Board.Board, { initialTop: 341, initialLeft: 280 })
-                )
+                _react2.default.createElement(Container, null)
             );
         }
     }]);
@@ -24028,6 +24065,16 @@ var Board = function (_React$Component) {
             clearInterval(this.interval);
         }
     }, {
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(nextProps) {
+            if (this.state.initialTop !== nextProps.initialTop) {
+                this.setState({ initialTop: nextProps.initialTop, playerTop: nextProps.initialTop + 70 });
+            }
+            if (this.state.initialLeft !== nextProps.initialLeft) {
+                this.setState({ initialLeft: nextProps.initialLeft, playerLeft: nextProps.initialLeft + 70 });
+            }
+        }
+    }, {
         key: 'getPlayerShift',
         value: function getPlayerShift(firstTile, lastTile, direction) {
 
@@ -24694,6 +24741,8 @@ var Board = function (_React$Component) {
             var tilesRow5 = row5.map(function (tile) {
                 return _react2.default.createElement(_Tile.Tile, { shape: tile.shape, treasure: tile.treasure, rotation: tile.rotation, initialX: 0, initialY: 0, index: index++, isdisplayed: tile.isDisplayed, sendObstacles: _this4.locateObstacles, key: key++ });
             });
+
+            console.log('lefttop', this.state.initialLeft, this.state.initialTop);
 
             if (this.state.tiles.length !== 0) {
                 return _react2.default.createElement(
