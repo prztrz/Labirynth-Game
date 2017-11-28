@@ -170,10 +170,11 @@ class Board extends React.Component {
         let toUnshift;
 
         //shift on the upper arrows
-        if (this.state.newTileTop === 161) {
+        if (this.state.newTileTop === this.state.initialTop-180) {
+            
 
             //first upper arrow
-            if(this.state.newTileLeft === 462) {
+            if(this.state.newTileLeft === this.state.initialLeft+182) {
                 let newPlayerTop = this.getPlayerShift(1,29,'down')
                 toUnshift = tiles[26];
                 toShift.rotation = (this.state.newTileRotation !== '') ? this.state.newTileRotation : toShift.rotation;
@@ -191,7 +192,7 @@ class Board extends React.Component {
             }
 
             //second upper arrow
-            if(this.state.newTileLeft === 826) {
+            if(this.state.newTileLeft === this.state.initialLeft+182*3) {
                 let newPlayerTop = this.getPlayerShift(3,31,'down')
                     toUnshift = tiles[28];
                     toShift.rotation = (this.state.newTileRotation !== '') ? this.state.newTileRotation : toShift.rotation;
@@ -209,7 +210,7 @@ class Board extends React.Component {
             }
 
             //third upper arrow
-            if(this.state.newTileLeft === 1190) {
+            if(this.state.newTileLeft === this.state.initialLeft+182*5) {
                 let newPlayerTop = this.getPlayerShift(5,33,'down')
                 toUnshift = tiles[30];
                 toShift.rotation = (this.state.newTileRotation !== '') ? this.state.newTileRotation : toShift.rotation;
@@ -228,10 +229,10 @@ class Board extends React.Component {
         }
         
         //shift on lower arrows
-        if (this.state.newTileTop === 1241) {
+        if (this.state.newTileTop === this.state.initialTop + 910) {
 
             //first lower arrow
-            if(this.state.newTileLeft === 462){
+            if(this.state.newTileLeft === this.state.initialLeft+182){
                 let newPlayerTop = this.getPlayerShift(1,29,'up')
                 toUnshift = tiles[0];
                 toShift.rotation = (this.state.newTileRotation !== '') ? this.state.newTileRotation : toShift.rotation;
@@ -249,7 +250,7 @@ class Board extends React.Component {
             }
 
             //second lower arrow
-            if(this.state.newTileLeft === 826) {
+            if(this.state.newTileLeft === this.state.initialLeft+182*3) {
                 let newPlayerTop = this.getPlayerShift(3,31,'up')
                 toUnshift = tiles[2];
                 toShift.rotation = (this.state.newTileRotation !== '') ? this.state.newTileRotation : toShift.rotation;
@@ -267,7 +268,7 @@ class Board extends React.Component {
             }
             
             //third lower arrow
-            if(this.state.newTileLeft === 1190) {
+            if(this.state.newTileLeft === this.state.initialLeft+182*5) {
                 let newPlayerTop = this.getPlayerShift(5,33,'up')
                 toUnshift = tiles[4];
                 toShift.rotation = (this.state.newTileRotation !== '') ? this.state.newTileRotation : toShift.rotation;
@@ -286,10 +287,10 @@ class Board extends React.Component {
         }
 
         //shift on the left arrows
-        if(this.state.newTileLeft === 100) {
+        if(this.state.newTileLeft === this.state.initialLeft-180) {
 
             //first left arrow
-            if(this.state.newTileTop === 523) {
+            if(this.state.newTileTop === this.state.initialTop + 182) {
                 let newPlayerLeft = this.getPlayerShift(7,13,'right');
 
                 toUnshift = tiles[11];
@@ -306,7 +307,7 @@ class Board extends React.Component {
             }
 
             //second left arrow
-            if(this.state.newTileTop === 887) {
+            if(this.state.newTileTop === this.state.initialTop + 182*3) {
                 let newPlayerLeft = this.getPlayerShift(21,27,'right');
                 toUnshift = tiles[25];
                 tiles.splice(25,1, tiles[24]);
@@ -323,10 +324,10 @@ class Board extends React.Component {
         }
         
         //shift on the right arrows
-        if(this.state.newTileLeft === 1554) {
+        if(this.state.newTileLeft === this.state.initialLeft + 1274) {
 
             //first right arrow
-            if(this.state.newTileTop === 523) {
+            if(this.state.newTileTop === this.state.initialTop + 182) {
                 let newPlayerLeft = this.getPlayerShift(7,13,'left')
 
                 toUnshift = tiles[5];
@@ -343,7 +344,7 @@ class Board extends React.Component {
             }
 
             //second right arrow
-            if(this.state.newTileTop === 887) {
+            if(this.state.newTileTop === this.state.initialTop + 182*3) {
                 let newPlayerLeft = this.getPlayerShift(21,27,'left')                
                 toUnshift = tiles[19];
                 tiles.splice(19,1, tiles[20]);
@@ -488,7 +489,7 @@ class Board extends React.Component {
         if (isVertical) {
             
             let top;
-            direction === 'up' ?  top = 900 : top = -180;
+            direction === 'up' ?  top = 910 : top = -180;
             this.setState({
                 newTileLeft: this.state.initialLeft + (182 * (multiplier-1)), 
                 newTileTop: this.state.initialTop + top,
@@ -1326,9 +1327,6 @@ class Board extends React.Component {
         let tilesRow4 = row4.map(tile => <Tile shape={tile.shape} treasure={tile.treasure} rotation={tile.rotation} initialX={0} initialY={0} index={index++} isdisplayed={tile.isDisplayed} sendObstacles={this.locateObstacles}key={key++}/>)
 
         let tilesRow5 = row5.map(tile => <Tile shape={tile.shape} treasure={tile.treasure} rotation={tile.rotation} initialX={0} initialY={0} index={index++} isdisplayed={tile.isDisplayed} sendObstacles={this.locateObstacles}key={key++}/>)
-
-
-        console.log('lefttop',this.state.initialLeft, this.state.initialTop)
 
         if (this.state.tiles.length !== 0){       
             return(

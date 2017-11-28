@@ -11,8 +11,6 @@ class Container extends React.Component {
         let top = ReactDOM.findDOMNode(this).getBoundingClientRect().y;
         let left = ReactDOM.findDOMNode(this).getBoundingClientRect().x;
 
-        console.log(top,left)
-
         this.setState({
             top: top,
             left: left
@@ -20,10 +18,9 @@ class Container extends React.Component {
     }
 
     render(){
-        console.log('top,left',this.state.top, this.state.left)
         return(
             <div className="container clearfix">
-                <Board initialTop={this.state.top+210} initialLeft={this.state.left}/>
+                <Board initialTop={Math.floor(this.state.top)+200} initialLeft={Math.floor(this.state.left)-8}/>
             </div>
         );
     }

@@ -23346,8 +23346,6 @@ var Container = function (_React$Component) {
             var top = _reactDom2.default.findDOMNode(this).getBoundingClientRect().y;
             var left = _reactDom2.default.findDOMNode(this).getBoundingClientRect().x;
 
-            console.log(top, left);
-
             this.setState({
                 top: top,
                 left: left
@@ -23356,11 +23354,10 @@ var Container = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            console.log('top,left', this.state.top, this.state.left);
             return _react2.default.createElement(
                 'div',
                 { className: 'container clearfix' },
-                _react2.default.createElement(_Board.Board, { initialTop: this.state.top + 210, initialLeft: this.state.left })
+                _react2.default.createElement(_Board.Board, { initialTop: Math.floor(this.state.top) + 200, initialLeft: Math.floor(this.state.left) - 8 })
             );
         }
     }]);
@@ -23555,10 +23552,10 @@ var Board = function (_React$Component) {
             var toUnshift = void 0;
 
             //shift on the upper arrows
-            if (_this.state.newTileTop === 161) {
+            if (_this.state.newTileTop === _this.state.initialTop - 180) {
 
                 //first upper arrow
-                if (_this.state.newTileLeft === 462) {
+                if (_this.state.newTileLeft === _this.state.initialLeft + 182) {
                     var newPlayerTop = _this.getPlayerShift(1, 29, 'down');
                     toUnshift = tiles[26];
                     toShift.rotation = _this.state.newTileRotation !== '' ? _this.state.newTileRotation : toShift.rotation;
@@ -23576,7 +23573,7 @@ var Board = function (_React$Component) {
                 }
 
                 //second upper arrow
-                if (_this.state.newTileLeft === 826) {
+                if (_this.state.newTileLeft === _this.state.initialLeft + 182 * 3) {
                     var _newPlayerTop = _this.getPlayerShift(3, 31, 'down');
                     toUnshift = tiles[28];
                     toShift.rotation = _this.state.newTileRotation !== '' ? _this.state.newTileRotation : toShift.rotation;
@@ -23594,7 +23591,7 @@ var Board = function (_React$Component) {
                 }
 
                 //third upper arrow
-                if (_this.state.newTileLeft === 1190) {
+                if (_this.state.newTileLeft === _this.state.initialLeft + 182 * 5) {
                     var _newPlayerTop2 = _this.getPlayerShift(5, 33, 'down');
                     toUnshift = tiles[30];
                     toShift.rotation = _this.state.newTileRotation !== '' ? _this.state.newTileRotation : toShift.rotation;
@@ -23613,10 +23610,10 @@ var Board = function (_React$Component) {
             }
 
             //shift on lower arrows
-            if (_this.state.newTileTop === 1241) {
+            if (_this.state.newTileTop === _this.state.initialTop + 910) {
 
                 //first lower arrow
-                if (_this.state.newTileLeft === 462) {
+                if (_this.state.newTileLeft === _this.state.initialLeft + 182) {
                     var _newPlayerTop3 = _this.getPlayerShift(1, 29, 'up');
                     toUnshift = tiles[0];
                     toShift.rotation = _this.state.newTileRotation !== '' ? _this.state.newTileRotation : toShift.rotation;
@@ -23634,7 +23631,7 @@ var Board = function (_React$Component) {
                 }
 
                 //second lower arrow
-                if (_this.state.newTileLeft === 826) {
+                if (_this.state.newTileLeft === _this.state.initialLeft + 182 * 3) {
                     var _newPlayerTop4 = _this.getPlayerShift(3, 31, 'up');
                     toUnshift = tiles[2];
                     toShift.rotation = _this.state.newTileRotation !== '' ? _this.state.newTileRotation : toShift.rotation;
@@ -23652,7 +23649,7 @@ var Board = function (_React$Component) {
                 }
 
                 //third lower arrow
-                if (_this.state.newTileLeft === 1190) {
+                if (_this.state.newTileLeft === _this.state.initialLeft + 182 * 5) {
                     var _newPlayerTop5 = _this.getPlayerShift(5, 33, 'up');
                     toUnshift = tiles[4];
                     toShift.rotation = _this.state.newTileRotation !== '' ? _this.state.newTileRotation : toShift.rotation;
@@ -23671,10 +23668,10 @@ var Board = function (_React$Component) {
             }
 
             //shift on the left arrows
-            if (_this.state.newTileLeft === 100) {
+            if (_this.state.newTileLeft === _this.state.initialLeft - 180) {
 
                 //first left arrow
-                if (_this.state.newTileTop === 523) {
+                if (_this.state.newTileTop === _this.state.initialTop + 182) {
                     var newPlayerLeft = _this.getPlayerShift(7, 13, 'right');
 
                     toUnshift = tiles[11];
@@ -23691,7 +23688,7 @@ var Board = function (_React$Component) {
                 }
 
                 //second left arrow
-                if (_this.state.newTileTop === 887) {
+                if (_this.state.newTileTop === _this.state.initialTop + 182 * 3) {
                     var _newPlayerLeft = _this.getPlayerShift(21, 27, 'right');
                     toUnshift = tiles[25];
                     tiles.splice(25, 1, tiles[24]);
@@ -23708,10 +23705,10 @@ var Board = function (_React$Component) {
             }
 
             //shift on the right arrows
-            if (_this.state.newTileLeft === 1554) {
+            if (_this.state.newTileLeft === _this.state.initialLeft + 1274) {
 
                 //first right arrow
-                if (_this.state.newTileTop === 523) {
+                if (_this.state.newTileTop === _this.state.initialTop + 182) {
                     var _newPlayerLeft2 = _this.getPlayerShift(7, 13, 'left');
 
                     toUnshift = tiles[5];
@@ -23728,7 +23725,7 @@ var Board = function (_React$Component) {
                 }
 
                 //second right arrow
-                if (_this.state.newTileTop === 887) {
+                if (_this.state.newTileTop === _this.state.initialTop + 182 * 3) {
                     var _newPlayerLeft3 = _this.getPlayerShift(21, 27, 'left');
                     toUnshift = tiles[19];
                     tiles.splice(19, 1, tiles[20]);
@@ -23803,7 +23800,7 @@ var Board = function (_React$Component) {
             if (isVertical) {
 
                 var top = void 0;
-                direction === 'up' ? top = 900 : top = -180;
+                direction === 'up' ? top = 910 : top = -180;
                 _this.setState({
                     newTileLeft: _this.state.initialLeft + 182 * (multiplier - 1),
                     newTileTop: _this.state.initialTop + top,
@@ -24741,8 +24738,6 @@ var Board = function (_React$Component) {
             var tilesRow5 = row5.map(function (tile) {
                 return _react2.default.createElement(_Tile.Tile, { shape: tile.shape, treasure: tile.treasure, rotation: tile.rotation, initialX: 0, initialY: 0, index: index++, isdisplayed: tile.isDisplayed, sendObstacles: _this4.locateObstacles, key: key++ });
             });
-
-            console.log('lefttop', this.state.initialLeft, this.state.initialTop);
 
             if (this.state.tiles.length !== 0) {
                 return _react2.default.createElement(
