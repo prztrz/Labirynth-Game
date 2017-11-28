@@ -14,7 +14,7 @@ module.exports = {
 
     output:{
         filename: '[name]',
-        path: __dirname + '/build'
+        path: __dirname + '/src'
     },
 
     plugins: [
