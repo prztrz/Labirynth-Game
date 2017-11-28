@@ -1,15 +1,15 @@
 # Labirynth-Game
 This is a simple logic game designed in react.js to present the author's skills and his learning progress.
 
-#Demo
+# Demo
 You can find and play the demo of this project on: https://prztrz.github.io/Labirynth-Game/index.html
 
-#Rules
+# Rules
 You need to help Mario with finding three random numbers displayed on your game pad among the numbers spreaded around the board and then go to castle. You can change the walls location on the board, by rotate your addition tile dispalyed on your pad. Confirm rotation with "confirm rotation" button, click one of green arrows on the board, and click "confirm position" button to shift-in the additional tile on the board. The last tile in the row or column you shifting-in the new tile will be shifted-out and will become your next additional tile. But remember: you can shift tile on board only 5 times - think smartly!
 Game is over if you use all your 5 shifts and you will not be able to collected all three numbers and go to castle.
 Game is win if you find all three numbers on the board and go to castle using no more than 5 tile shifts.
 
-#Installation
+# Installation
 To install the project on your computer, download it. You will need react and react-dom packages to properly edit the project. The project hass been created with sass css preprocessor, gulp, and webpack, therefore it will be usefull to install thesese packages as well.
 
 Please learn a little bit about components:
@@ -28,7 +28,7 @@ Please learn a little bit about components:
 * **Header.jsx** - component representing header of the website
 * **SectionGame.jsx** - component representing section-game o nthe website, here's the board is rendered
 
-#Technical guidance
+# Technical guidance
 The horizontal and vertical orientation in the game is possibile due to initialLeft and initialTop props received by the Board component. Default values are respectively 341 and 280 (in px by default), changing the board position on the website will require changing these props values.
 
 The board is built up of 35 Tile components (counted from 0 to 34 from left to right from top to bottom row) placed in 5 rows each containing 7 tiles. Every tile consits of 9 Grid components placed in 3 rows each containing 3 grids. Every gris is 60px x 60px square of one of two types: 0 - obstacle (wall) 1 - way. The player's sprite cannot be located on obstacle grids while it can move freely on way grids. This feature is controlled by collision detection system - read below. 
