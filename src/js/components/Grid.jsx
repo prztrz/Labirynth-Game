@@ -22,10 +22,18 @@ class Grid extends React.Component {
     }
 
     render(){
-        let treasure = (this.props.treasure !== null && this.props.treasure !== 0) ? this.props.treasure : '';
-        return(
-            <div className={'game-grid ' + this.state.class} style={{backgroundColor: this.state.background }}><h4>{treasure}</h4></div>
-        );
+        let treasure = (this.state.treasure !== null && this.state.treasure !== 0) ? this.state.treasure : '';
+        if (this.state.treasure === 'A') {
+            return (<div className={'game-grid ' + this.state.class}> <div style={{backgroundImage: 'url(images/sprites/positions/start.png)', height: '60px', width: '60px', backgroundSize: '225%',     backgroundPositionX: '-45px', backgroundPositionY: '-8px'}}></div> </div>);
+        } 
+        
+        if (this.state.treasure === 'D') {
+            return (<div className={'game-grid ' + this.state.class}> <div style={{backgroundImage: 'url(images/sprites/positions/finish.png)', height: '60px', width: '60px', backgroundSize: '100%',     backgroundPosition: 'center'}}></div> </div>);
+        }else{
+            return(
+                <div className={'game-grid ' + this.state.class} style={{backgroundColor: this.state.background }}><h4>{treasure}</h4></div>
+            );
+        }
     }
 }
 

@@ -16,17 +16,37 @@ class GameOver extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            isGameOver: false,
-            isWin: false
+            isGameOver: this.props.isGameOver,
+            isWin: this.props.isWin
+        }
+    }
+
+    componentWillReceiveProps (nextProps) {
+        if (this.state.isGameOver !== nextProps.isGameOver) {
+            this.setState({isGameOver: nextProps.isGameOver})
+        }
+
+        if (this.state.iswin !== nextProps.isWin) {
+            this.setState({iswin: nextProps.isWin})
         }
     }
     render(){
-        if (this.state.isGameOver || this.state.isWin){
+        if (this.state.isGameOver){
             return(
                 <div className='game-over'>
                     <div className='box'>
                         <h2>Game Over</h2>
-                        <p>You run out of shifts!</p>
+                        <p>You ran out of shifts!</p>
+                        <p>Try again?</p>
+                    </div>
+                </div>
+            );
+        }
+        if (this.state.isWin) {
+            return(
+                <div className='game-over'>
+                    <div className='box'>
+                        <h2>You Win!</h2>
                         <p>Try again?</p>
                     </div>
                 </div>
@@ -113,7 +133,10 @@ class Board extends React.Component {
             playerRotate: 0,
             targets:[],
             targetTiles: [],
-            shifts: 10
+            shifts: 5,
+            isGameOver: false,
+            isWin: false,
+
         }
         this.obstacleMap = []; //Array of objects representing top and left positions of every obstacle (wall) on the board, created when Board component is mounted or updated
         this.canPlayerMove = true; //if false disables player's sprite ability to move
@@ -138,6 +161,9 @@ class Board extends React.Component {
     }
 
     updateBoard = () => {
+        if (this.state.shifts === 0) {
+            this.setState({isGameOver: true});
+        }
         let tiles= this.state.tiles.slice();
         let toShift = tiles[tiles.length-1]
         let toUnshift;
@@ -491,7 +517,6 @@ class Board extends React.Component {
 
 
         let currentTile = this.findTile(currPlayerPos.leftBound, currPlayerPos.rightBound, currPlayerPos.topBound, currPlayerPos.bottomBound);
-        //this.findGrid(currPlayerPos.leftBound, currPlayerPos.rightBound, currPlayerPos.topBound, currPlayerPos.bottomBound)
         let currentMap;
         let mapOnRight;
         let mapOnLeft;
@@ -521,7 +546,7 @@ class Board extends React.Component {
             case 'ArrowUp':{
                 
 
-                if (nextPlayerPos.topBound < this.state.initialTop) {
+                if (nextPlayerPos.topBound < this.state.initialTop+5) {
                     this.canPlayerMove = false;
                 }
 
@@ -578,7 +603,7 @@ class Board extends React.Component {
 
             case 'ArrowDown':
             
-            if (nextPlayerPos.bottomBound > this.state.initialTop + 910) {
+            if (nextPlayerPos.bottomBound > this.state.initialTop + 905) {
                 this.canPlayerMove = false;
             }
                 if (typeof currentTile !== 'number'){
@@ -687,7 +712,7 @@ class Board extends React.Component {
 
             case 'ArrowRight':
 
-                if (nextPlayerPos.leftBound >  this.state.initialLeft + 1274) {
+                if (nextPlayerPos.leftBound >  this.state.initialLeft + 1214) {
                     this.canPlayerMove = false;
                 }
 
@@ -824,7 +849,6 @@ class Board extends React.Component {
             let capturedTreasureIndex = this.state.targets.indexOf(capturedTreasure);
 
             targets.splice(capturedTreasureIndex, 1)
-            console.log(tiles, targets)
 
             currentTileObject.treasure = 0;
             tiles.splice(currentTileIndex, 1, currentTileObject);
@@ -1067,6 +1091,15 @@ class Board extends React.Component {
         }
 
         this.checkPlayerOnTreasure(); 
+        this.checkWin();
+    }
+
+    checkWin() {
+        let currentTile = this.findTile(this.state.playerLeft, this.state.playerLeft + this.state.playerWidth, this.state.playerTop, this.state.playerTop + this.state.playerHeight);
+        
+            if (currentTile === 34 && this.isPlayerOnCentralGrid(this.state.playerLeft, this.state.playerLeft + this.state.playerWidth, this.state.playerTop, this.state.playerTop + this.state.playerHeight) && this.state.targets.length === 0) {
+                this.setState({isWin: true})
+            }
     }
 
     moveUp = () => {
@@ -1297,12 +1330,11 @@ class Board extends React.Component {
 
         let tilesRow5 = row5.map(tile => <Tile shape={tile.shape} treasure={tile.treasure} rotation={tile.rotation} initialX={0} initialY={0} index={index++} isdisplayed={tile.isDisplayed} sendObstacles={this.locateObstacles}key={key++}/>)
 
-        console.log(this.state.targets)
 
         if (this.state.tiles.length !== 0){       
             return(
                 <div className="game-panel">
-                    <GameOver />
+                    <GameOver isGameOver={this.state.isGameOver} isWin={this.state.isWin}/>
                     <Player top={this.state.playerTop} left={this.state.playerLeft} width={this.state.playerWidth}height={this.state.playerHeight} img={this.state.playerImg} rotate={this.state.playerRotate}/>
                     <div className='row clearfix'>
                         <Arrow direction="down" col={2} insertTile={this.insertTile} isActive={this.state.areArrowsActive}/>
