@@ -10,6 +10,7 @@ class Header extends React.Component {
                         <h1>Labirynth</h1>
                     </div>
                 </div>
+                {this.props.children}
             </header> 
         );
     }

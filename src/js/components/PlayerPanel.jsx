@@ -75,7 +75,7 @@ class PlayerPanel extends React.Component {
                             <InfoTable targets={this.state.targets} shifts={this.state.shifts}/>
                         </div>
                     </div>
-                    <div className="copyright-info"><small>Przemysław Trzepiński &copy; 2017. <a href='https://opensource.org/licenses/MIT' target="_blank">MIT licence</a> - use it however you want, just don't say you are an author, please!</small></div>
+                    <div className="copyright-info"><small>Przemysław Trzepiński &copy; 2017. <a href='https://opensource.org/licenses/MIT' target="_blank">MIT licence</a> - use it however you want, just don't claim you are an author, please!</small></div>
                 </div>
             </div>
         );

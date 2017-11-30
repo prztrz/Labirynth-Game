@@ -145,7 +145,7 @@ class Board extends React.Component {
     }
 
     componentWillUnmount() {
-        document.removeEventListener(this.movePlayer);
+        document.removeEventListener('keydown', this.movePlayer);
         clearInterval(this.interval);
     }
 
