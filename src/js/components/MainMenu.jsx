@@ -83,7 +83,7 @@ class MainMenu extends React.Component {
                         <ul>
                             <li className={this.state.activeLink === 0 && 'active'} onMouseEnter={this.switchActiveLink} data-order={0}><Link to='/game' data-order={0}>Start new game</Link></li>
                             <li className={this.state.activeLink === 1 && 'active'} onMouseEnter={this.switchActiveLink} data-order={1}><Link to="/tutorial" data-order={1}>Rules</Link></li>
-                            <li className={this.state.activeLink === 2 && 'active'} onMouseEnter={this.switchActiveLink} data-order={2}><Link to="/tutorial" data-order={2}>Author</Link></li>
+                            <li className={this.state.activeLink === 2 && 'active'} onMouseEnter={this.switchActiveLink} data-order={2}><Link to="/author" data-order={2}>Author</Link></li>
                         </ul>
                     </nav>
                 </div>

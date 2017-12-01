@@ -14,24 +14,9 @@ import	{	Router,
 import {Header} from './components/Header.jsx'
 import{SectionGame} from './components/SectionGame.jsx';
 import {MainMenu} from './components/MainMenu.jsx';
+import {NotFound} from './components/NotFound.jsx'
 require('../css/app.scss')
 
-// class Main extends React.Component {
-//     render(){
-//         return (
-//             <div>
-//                <Header />
-//                <SectionGame />
-//             </div>
-//         )
-//     }
-// }
-
-class NotFound extends React.Component {
-    render(){
-        return(null);
-    }
-}
 
 class Tutorial extends React.Component {
     render(){

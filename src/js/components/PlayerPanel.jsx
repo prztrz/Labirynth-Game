@@ -6,6 +6,28 @@ import { PadButton } from "./PadButton.jsx";
 import { Tile } from "./Tile.jsx";
 import {InfoTable} from "./InfoTable.jsx"
 
+class HideButton extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            isActive: this.props.isActive
+        }
+    }
+
+    componentWillReceiveProps (nextProps) {
+        if (this.state.isActive !== nextProps.isActive) {
+            this.setState({
+                isActive: nextProps.isActive
+            })
+        }
+    }
+    render(){
+        return(
+            <span className={`hide-button ${this.props.isActive ? 'active' : ''}`} onClick={this.props.callTogglePad}>{this.props.isActive ? 'Show pad' : 'Hide pad'}</span>
+        );
+    }
+}
+
 
 /**
  * @class PlayerPanel represents the game control panel
@@ -24,15 +46,10 @@ class PlayerPanel extends React.Component {
             isRotatorActive: true,
             buttonText: 'Confirm rotation',
             targets: this.props.targets,
-            shifts: this.props.shifts
+            shifts: this.props.shifts,
+            displayPad: true
         }
     }
-
-    // componentWillReceiveProps(nextProps) {
-    //     if (this.state.timer !== nextProps.timer){
-    //         this.setState({timer: nextProps.timer})
-    //     }
-    // }
     
     toggleButton = () => {
         if (this.state.isButtonActive) {
@@ -55,10 +72,17 @@ class PlayerPanel extends React.Component {
         }
     }
 
+    togglePad = () => {
+        this.setState({
+            displayPad: this.state.displayPad ? false : true
+        })
+    }
+
     render(){
         return(
             <div className="player-panel clearfix">
-                <div className="player-pad">
+                <div className={`player-pad ${this.state.displayPad ? '' : 'hidden'}`}>
+                <HideButton isActive={!this.state.displayPad} callTogglePad={this.togglePad}/>
                     <div className="pad-body clearfix">
                         <div className='col-1-3'>
                             <Rotator callRotateTile={this.props.callRotateTile} isActive={this.state.isRotatorActive}/>

@@ -89,11 +89,6 @@ body {
             margin-left: 10px;
             height: 50px;
             width: 25px;
-            
-            &.player-one {
-                //background-image: url('../img/mario-sprite.png');
-                background-position: 35px -2px;
-            }
         }
     }
 }
@@ -180,6 +175,47 @@ body {
     }
 
     .main-menu-footer {
+        background-color: $secondary-background;
+        width: 100%;
+        position: absolute;
+        bottom:0;
+        left:0;
+        padding: 10px;
+        text-align: center;
+        small {
+            font-size: 0.8rem;
+        }
+
+        a {
+            color: #000;
+        }
+    }
+}
+
+//SECTION NOT FOUND
+.section-not-found {
+    background-color: $main-background;
+    height: calc(100vh - 131px);
+
+    .not-found-header {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 120px;
+        padding-bottom: 90px;
+
+        h2 {
+            font-size: 6rem;
+        }
+
+        a {
+            color: #000;
+        }
+    }
+
+    .not-found-footer {
         background-color: $secondary-background;
         width: 100%;
         position: absolute;
@@ -348,6 +384,40 @@ body {
         background-color: $main-background;
         margin-bottom: 200px;
         margin-top: 250px;
+
+        .hide-button {
+            position: relative;
+            margin-left: 20px;
+            cursor: pointer;
+
+            &:before {
+                content: '';
+                display: block;
+                width: 0;
+                height: 0;
+                border: 10px solid transparent;
+                border-top-color: #000;
+                position: absolute;
+                left: -15px;
+                top: 0;
+                transform: translate(-50%, 0);
+                
+            }
+
+            &.active::before {
+                content: '';
+                display: block;
+                width: 0;
+                height: 0;
+                border: 10px solid transparent;
+                border-bottom-color: #000;
+                position: absolute;
+                left: -15px;
+                top: 0;
+                transform: translate(-50%, 0);
+                
+            }
+        }
         
 
         .player-pad {
@@ -359,6 +429,11 @@ body {
             bottom: 0;
             z-index: 2;
             transform: translateX(5.8%);
+            transition: height 0.2s linear;
+
+            &.hidden {
+                height: 35px;
+            }
 
             .copyright-info {
                 padding-top: 5px;
