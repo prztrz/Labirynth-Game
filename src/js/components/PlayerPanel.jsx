@@ -4,29 +4,8 @@ import ReactDOM from 'react-dom';
 import { Rotator } from "./Rotator.jsx";
 import { PadButton } from "./PadButton.jsx";
 import { Tile } from "./Tile.jsx";
-import {InfoTable} from "./InfoTable.jsx"
-
-class HideButton extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            isActive: this.props.isActive
-        }
-    }
-
-    componentWillReceiveProps (nextProps) {
-        if (this.state.isActive !== nextProps.isActive) {
-            this.setState({
-                isActive: nextProps.isActive
-            })
-        }
-    }
-    render(){
-        return(
-            <span className={`hide-button ${this.props.isActive ? 'active' : ''}`} onClick={this.props.callTogglePad}>{this.props.isActive ? 'Show pad' : 'Hide pad'}</span>
-        );
-    }
-}
+import {InfoTable} from "./InfoTable.jsx";
+import {HideButton} from "./HideButton.jsx";
 
 
 /**

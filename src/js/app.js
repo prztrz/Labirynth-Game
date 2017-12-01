@@ -431,6 +431,16 @@ module.exports = reactProdInvariant;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+module.exports = __webpack_require__(25);
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /*
 object-assign
 (c) Sindre Sorhus
@@ -521,16 +531,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 	return to;
 };
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = __webpack_require__(25);
 
 
 /***/ }),
@@ -732,6 +732,16 @@ module.exports = ReactDOMComponentTree;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+module.exports = __webpack_require__(132);
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -765,16 +775,6 @@ var ExecutionEnvironment = {
 };
 
 module.exports = ExecutionEnvironment;
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = __webpack_require__(132);
-
 
 /***/ }),
 /* 9 */
@@ -1328,7 +1328,7 @@ module.exports = ReactCurrentOwner;
 
 
 var _prodInvariant = __webpack_require__(3),
-    _assign = __webpack_require__(4);
+    _assign = __webpack_require__(5);
 
 var CallbackQueue = __webpack_require__(84);
 var PooledClass = __webpack_require__(24);
@@ -1584,7 +1584,7 @@ module.exports = ReactUpdates;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var PooledClass = __webpack_require__(24);
 
@@ -1856,7 +1856,7 @@ function getPooledWarningPropertyDefinition(propName, getVal) {
 
 
 
-var React = __webpack_require__(5);
+var React = __webpack_require__(4);
 var factory = __webpack_require__(222);
 
 if (typeof React === 'undefined') {
@@ -2169,7 +2169,7 @@ module.exports = warning;
 /* harmony export (immutable) */ __webpack_exports__["a"] = createRouteFromReactElement;
 /* unused harmony export createRoutesFromReactChildren */
 /* harmony export (immutable) */ __webpack_exports__["b"] = createRoutes;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -2416,7 +2416,7 @@ module.exports = reactProdInvariant;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var ReactCurrentOwner = __webpack_require__(14);
 
@@ -2893,7 +2893,7 @@ module.exports = PooledClass;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var ReactChildren = __webpack_require__(121);
 var ReactComponent = __webpack_require__(48);
@@ -4805,7 +4805,7 @@ module.exports = SyntheticMouseEvent;
 
 
 
-var ExecutionEnvironment = __webpack_require__(7);
+var ExecutionEnvironment = __webpack_require__(8);
 var DOMNamespaces = __webpack_require__(57);
 
 var WHITESPACE_TEST = /^[ \r\n\t\f]/;
@@ -5036,7 +5036,7 @@ module.exports = escapeTextContentForBrowser;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var EventPluginRegistry = __webpack_require__(37);
 var ReactEventEmitterMixin = __webpack_require__(166);
@@ -5449,11 +5449,11 @@ exports.Tile = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(8);
+var _reactDom = __webpack_require__(7);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -6392,7 +6392,7 @@ module.exports = getEventTarget;
 
 
 
-var ExecutionEnvironment = __webpack_require__(7);
+var ExecutionEnvironment = __webpack_require__(8);
 
 var useHasFeature;
 if (ExecutionEnvironment.canUseDOM) {
@@ -7405,7 +7405,7 @@ module.exports = ReactUpdateQueue;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var emptyFunction = __webpack_require__(10);
 var warning = __webpack_require__(2);
@@ -8037,7 +8037,7 @@ function mapAsync(array, work, callback) {
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_invariant__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_create_react_class__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_create_react_class___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_create_react_class__);
@@ -9061,7 +9061,7 @@ module.exports = forEachAccumulated;
 
 
 
-var ExecutionEnvironment = __webpack_require__(7);
+var ExecutionEnvironment = __webpack_require__(8);
 
 var contentKey = null;
 
@@ -9339,7 +9339,7 @@ module.exports = ViewportMetrics;
 
 
 
-var ExecutionEnvironment = __webpack_require__(7);
+var ExecutionEnvironment = __webpack_require__(8);
 var escapeTextContentForBrowser = __webpack_require__(41);
 var setInnerHTML = __webpack_require__(40);
 
@@ -9844,7 +9844,7 @@ module.exports = ReactPropTypesSecret;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var LinkedValueUtils = __webpack_require__(59);
 var ReactDOMComponentTree = __webpack_require__(6);
@@ -10051,7 +10051,7 @@ module.exports = ReactDOMSelect;
 
 
 var _prodInvariant = __webpack_require__(3),
-    _assign = __webpack_require__(4);
+    _assign = __webpack_require__(5);
 
 var ReactCompositeComponent = __webpack_require__(173);
 var ReactEmptyComponent = __webpack_require__(96);
@@ -10256,7 +10256,7 @@ module.exports = ReactEmptyComponent;
 
 
 var _prodInvariant = __webpack_require__(3),
-    _assign = __webpack_require__(4);
+    _assign = __webpack_require__(5);
 
 var invariant = __webpack_require__(1);
 
@@ -11348,7 +11348,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -11797,7 +11797,7 @@ function assignRouterState(router, _ref) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_create_react_class__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_create_react_class___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_create_react_class__);
@@ -12450,11 +12450,11 @@ exports.Grid = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(8);
+var _reactDom = __webpack_require__(7);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -12548,11 +12548,11 @@ exports.PadButton = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(8);
+var _reactDom = __webpack_require__(7);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -12636,11 +12636,11 @@ exports.RotateButton = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(8);
+var _reactDom = __webpack_require__(7);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -12714,11 +12714,11 @@ exports.Rotator = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(8);
+var _reactDom = __webpack_require__(7);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -12838,11 +12838,11 @@ exports.Rotator = Rotator;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(8);
+var _reactDom = __webpack_require__(7);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -12856,9 +12856,9 @@ var _Header = __webpack_require__(247);
 
 var _SectionGame = __webpack_require__(248);
 
-var _MainMenu = __webpack_require__(255);
+var _MainMenu = __webpack_require__(256);
 
-var _NotFound = __webpack_require__(256);
+var _NotFound = __webpack_require__(257);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -12868,7 +12868,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-__webpack_require__(257);
+__webpack_require__(258);
 
 var Tutorial = function (_React$Component) {
     _inherits(Tutorial, _React$Component);
@@ -13512,7 +13512,7 @@ module.exports = KeyEscapeUtils;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var ReactComponent = __webpack_require__(48);
 var ReactNoopUpdateQueue = __webpack_require__(49);
@@ -13560,7 +13560,7 @@ module.exports = ReactPureComponent;
 
 
 var _prodInvariant = __webpack_require__(22),
-    _assign = __webpack_require__(4);
+    _assign = __webpack_require__(5);
 
 var ReactComponent = __webpack_require__(48);
 var ReactElement = __webpack_require__(23);
@@ -15105,7 +15105,7 @@ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' && typeof __REACT_DEVT
 }
 
 if (process.env.NODE_ENV !== 'production') {
-  var ExecutionEnvironment = __webpack_require__(7);
+  var ExecutionEnvironment = __webpack_require__(8);
   if (ExecutionEnvironment.canUseDOM && window.top === window.self) {
 
     // First check if devtools is not installed
@@ -15342,7 +15342,7 @@ module.exports = ARIADOMPropertyConfig;
 
 
 var EventPropagators = __webpack_require__(32);
-var ExecutionEnvironment = __webpack_require__(7);
+var ExecutionEnvironment = __webpack_require__(8);
 var FallbackCompositionState = __webpack_require__(136);
 var SyntheticCompositionEvent = __webpack_require__(137);
 var SyntheticInputEvent = __webpack_require__(138);
@@ -15731,7 +15731,7 @@ module.exports = BeforeInputEventPlugin;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var PooledClass = __webpack_require__(24);
 
@@ -15916,7 +15916,7 @@ module.exports = SyntheticInputEvent;
 
 var EventPluginHub = __webpack_require__(33);
 var EventPropagators = __webpack_require__(32);
-var ExecutionEnvironment = __webpack_require__(7);
+var ExecutionEnvironment = __webpack_require__(8);
 var ReactDOMComponentTree = __webpack_require__(6);
 var ReactUpdates = __webpack_require__(15);
 var SyntheticEvent = __webpack_require__(16);
@@ -16438,7 +16438,7 @@ module.exports = ReactOwner;
 var ReactInvalidSetStateWarningHook = __webpack_require__(143);
 var ReactHostOperationHistoryHook = __webpack_require__(144);
 var ReactComponentTreeHook = __webpack_require__(11);
-var ExecutionEnvironment = __webpack_require__(7);
+var ExecutionEnvironment = __webpack_require__(8);
 
 var performanceNow = __webpack_require__(145);
 var warning = __webpack_require__(2);
@@ -16919,7 +16919,7 @@ module.exports = performanceNow;
 
 
 
-var ExecutionEnvironment = __webpack_require__(7);
+var ExecutionEnvironment = __webpack_require__(8);
 
 var performance;
 
@@ -17337,7 +17337,7 @@ module.exports = ReactComponentBrowserEnvironment;
 var _prodInvariant = __webpack_require__(3);
 
 var DOMLazyTree = __webpack_require__(28);
-var ExecutionEnvironment = __webpack_require__(7);
+var ExecutionEnvironment = __webpack_require__(8);
 
 var createNodesFromMarkup = __webpack_require__(152);
 var emptyFunction = __webpack_require__(10);
@@ -17389,7 +17389,7 @@ module.exports = Danger;
 
 /*eslint-disable fb-www/unsafe-html*/
 
-var ExecutionEnvironment = __webpack_require__(7);
+var ExecutionEnvironment = __webpack_require__(8);
 
 var createArrayFromMixed = __webpack_require__(153);
 var getMarkupWrap = __webpack_require__(154);
@@ -17607,7 +17607,7 @@ module.exports = createArrayFromMixed;
 
 /*eslint-disable fb-www/unsafe-html */
 
-var ExecutionEnvironment = __webpack_require__(7);
+var ExecutionEnvironment = __webpack_require__(8);
 
 var invariant = __webpack_require__(1);
 
@@ -17748,7 +17748,7 @@ module.exports = ReactDOMIDOperations;
 
 
 var _prodInvariant = __webpack_require__(3),
-    _assign = __webpack_require__(4);
+    _assign = __webpack_require__(5);
 
 var AutoFocusUtils = __webpack_require__(157);
 var CSSPropertyOperations = __webpack_require__(158);
@@ -18776,7 +18776,7 @@ module.exports = AutoFocusUtils;
 
 
 var CSSProperty = __webpack_require__(90);
-var ExecutionEnvironment = __webpack_require__(7);
+var ExecutionEnvironment = __webpack_require__(8);
 var ReactInstrumentation = __webpack_require__(12);
 
 var camelizeStyleName = __webpack_require__(159);
@@ -19333,7 +19333,7 @@ module.exports = ReactEventEmitterMixin;
 
 
 
-var ExecutionEnvironment = __webpack_require__(7);
+var ExecutionEnvironment = __webpack_require__(8);
 
 /**
  * Generate a mapping of standard vendor prefixes using the defined style property and event name.
@@ -19440,7 +19440,7 @@ module.exports = getVendorPrefixedEventName;
 
 
 var _prodInvariant = __webpack_require__(3),
-    _assign = __webpack_require__(4);
+    _assign = __webpack_require__(5);
 
 var DOMPropertyOperations = __webpack_require__(91);
 var LinkedValueUtils = __webpack_require__(59);
@@ -19713,7 +19713,7 @@ module.exports = ReactDOMInput;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var React = __webpack_require__(25);
 var ReactDOMComponentTree = __webpack_require__(6);
@@ -19843,7 +19843,7 @@ module.exports = ReactDOMOption;
 
 
 var _prodInvariant = __webpack_require__(3),
-    _assign = __webpack_require__(4);
+    _assign = __webpack_require__(5);
 
 var LinkedValueUtils = __webpack_require__(59);
 var ReactDOMComponentTree = __webpack_require__(6);
@@ -20619,7 +20619,7 @@ module.exports = ReactChildReconciler;
 
 
 var _prodInvariant = __webpack_require__(3),
-    _assign = __webpack_require__(4);
+    _assign = __webpack_require__(5);
 
 var React = __webpack_require__(25);
 var ReactComponentEnvironment = __webpack_require__(60);
@@ -21829,7 +21829,7 @@ module.exports = flattenChildren;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var PooledClass = __webpack_require__(24);
 var Transaction = __webpack_require__(38);
@@ -22070,7 +22070,7 @@ module.exports = ReactServerUpdateQueue;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var DOMLazyTree = __webpack_require__(28);
 var ReactDOMComponentTree = __webpack_require__(6);
@@ -22278,7 +22278,7 @@ module.exports = {
 
 
 var _prodInvariant = __webpack_require__(3),
-    _assign = __webpack_require__(4);
+    _assign = __webpack_require__(5);
 
 var DOMChildrenOperations = __webpack_require__(56);
 var DOMLazyTree = __webpack_require__(28);
@@ -22447,7 +22447,7 @@ module.exports = ReactDOMTextComponent;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var ReactUpdates = __webpack_require__(15);
 var Transaction = __webpack_require__(38);
@@ -22520,10 +22520,10 @@ module.exports = ReactDefaultBatchingStrategy;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var EventListener = __webpack_require__(99);
-var ExecutionEnvironment = __webpack_require__(7);
+var ExecutionEnvironment = __webpack_require__(8);
 var PooledClass = __webpack_require__(24);
 var ReactDOMComponentTree = __webpack_require__(6);
 var ReactUpdates = __webpack_require__(15);
@@ -22761,7 +22761,7 @@ module.exports = ReactInjection;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var CallbackQueue = __webpack_require__(84);
 var PooledClass = __webpack_require__(24);
@@ -22945,7 +22945,7 @@ module.exports = ReactReconcileTransaction;
 
 
 
-var ExecutionEnvironment = __webpack_require__(7);
+var ExecutionEnvironment = __webpack_require__(8);
 
 var getNodeForCharacterOffset = __webpack_require__(191);
 var getTextContentAccessor = __webpack_require__(83);
@@ -23648,7 +23648,7 @@ module.exports = SVGDOMPropertyConfig;
 
 
 var EventPropagators = __webpack_require__(32);
-var ExecutionEnvironment = __webpack_require__(7);
+var ExecutionEnvironment = __webpack_require__(8);
 var ReactDOMComponentTree = __webpack_require__(6);
 var ReactInputSelection = __webpack_require__(100);
 var SyntheticEvent = __webpack_require__(16);
@@ -25149,7 +25149,7 @@ module.exports = ReactDOMInvalidARIAHook;
 var emptyFunction = __webpack_require__(10);
 var invariant = __webpack_require__(1);
 var warning = __webpack_require__(2);
-var assign = __webpack_require__(4);
+var assign = __webpack_require__(5);
 
 var ReactPropTypesSecret = __webpack_require__(67);
 var checkPropTypes = __webpack_require__(218);
@@ -25843,7 +25843,7 @@ module.exports = exports['default'];
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_invariant__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_create_react_class__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_create_react_class___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_create_react_class__);
@@ -26021,7 +26021,7 @@ var propTypes = {
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var emptyObject = __webpack_require__(26);
 var _invariant = __webpack_require__(1);
@@ -27606,7 +27606,7 @@ function getRouteParams(route, params) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_create_react_class__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_create_react_class___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_create_react_class__);
@@ -27638,7 +27638,7 @@ var IndexLink = __WEBPACK_IMPORTED_MODULE_1_create_react_class___default()({
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony export (immutable) */ __webpack_exports__["a"] = withRouter;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_invariant__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_create_react_class__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_create_react_class___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_create_react_class__);
@@ -28007,7 +28007,7 @@ function match(_ref, callback) {
 "use strict";
 
 var strictUriEncode = __webpack_require__(237);
-var objectAssign = __webpack_require__(4);
+var objectAssign = __webpack_require__(5);
 
 function encoderForArrayFormat(opts) {
 	switch (opts.arrayFormat) {
@@ -28439,7 +28439,7 @@ var loopAsync = exports.loopAsync = function loopAsync(turns, work, callback) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__RouterContext__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__routerWarning__ = __webpack_require__(29);
@@ -28964,11 +28964,11 @@ exports.Header = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(8);
+var _reactDom = __webpack_require__(7);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -29032,11 +29032,11 @@ exports.SectionGame = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(8);
+var _reactDom = __webpack_require__(7);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -29129,11 +29129,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(8);
+var _reactDom = __webpack_require__(7);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -29153,7 +29153,7 @@ var _Rotator = __webpack_require__(119);
 
 var _PlayerPanel = __webpack_require__(252);
 
-var _GameOver = __webpack_require__(254);
+var _GameOver = __webpack_require__(255);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30530,11 +30530,11 @@ exports.Player = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(8);
+var _reactDom = __webpack_require__(7);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -30622,11 +30622,11 @@ exports.Arrow = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(8);
+var _reactDom = __webpack_require__(7);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -30716,11 +30716,11 @@ exports.PlayerPanel = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(8);
+var _reactDom = __webpack_require__(7);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -30732,6 +30732,8 @@ var _Tile = __webpack_require__(45);
 
 var _InfoTable = __webpack_require__(253);
 
+var _HideButton = __webpack_require__(254);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30739,43 +30741,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var HideButton = function (_React$Component) {
-    _inherits(HideButton, _React$Component);
-
-    function HideButton(props) {
-        _classCallCheck(this, HideButton);
-
-        var _this = _possibleConstructorReturn(this, (HideButton.__proto__ || Object.getPrototypeOf(HideButton)).call(this, props));
-
-        _this.state = {
-            isActive: _this.props.isActive
-        };
-        return _this;
-    }
-
-    _createClass(HideButton, [{
-        key: 'componentWillReceiveProps',
-        value: function componentWillReceiveProps(nextProps) {
-            if (this.state.isActive !== nextProps.isActive) {
-                this.setState({
-                    isActive: nextProps.isActive
-                });
-            }
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'span',
-                { className: 'hide-button ' + (this.props.isActive ? 'active' : ''), onClick: this.props.callTogglePad },
-                this.props.isActive ? 'Show pad' : 'Hide pad'
-            );
-        }
-    }]);
-
-    return HideButton;
-}(_react2.default.Component);
 
 /**
  * @class PlayerPanel represents the game control panel
@@ -30785,53 +30750,51 @@ var HideButton = function (_React$Component) {
  * @method toggleRotator toggles the activity of rotate buttons
  * 
  */
-
-
-var PlayerPanel = function (_React$Component2) {
-    _inherits(PlayerPanel, _React$Component2);
+var PlayerPanel = function (_React$Component) {
+    _inherits(PlayerPanel, _React$Component);
 
     function PlayerPanel(props) {
         _classCallCheck(this, PlayerPanel);
 
-        var _this2 = _possibleConstructorReturn(this, (PlayerPanel.__proto__ || Object.getPrototypeOf(PlayerPanel)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (PlayerPanel.__proto__ || Object.getPrototypeOf(PlayerPanel)).call(this, props));
 
-        _this2.toggleButton = function () {
-            if (_this2.state.isButtonActive) {
-                _this2.setState({
+        _this.toggleButton = function () {
+            if (_this.state.isButtonActive) {
+                _this.setState({
                     isButtonActive: false
                 });
             } else {
-                _this2.setState({ isButtonActive: true });
+                _this.setState({ isButtonActive: true });
             }
         };
 
-        _this2.toggleRotator = function () {
+        _this.toggleRotator = function () {
 
-            if (_this2.state.isRotatorActive) {
-                _this2.setState({
+            if (_this.state.isRotatorActive) {
+                _this.setState({
                     isRotatorActive: false
                 });
             } else {
-                _this2.setState({ isRotatorActive: true });
+                _this.setState({ isRotatorActive: true });
             }
         };
 
-        _this2.togglePad = function () {
-            _this2.setState({
-                displayPad: _this2.state.displayPad ? false : true
+        _this.togglePad = function () {
+            _this.setState({
+                displayPad: _this.state.displayPad ? false : true
             });
         };
 
-        _this2.state = {
-            tile: _this2.props.tile,
+        _this.state = {
+            tile: _this.props.tile,
             isButtonActive: true,
             isRotatorActive: true,
             buttonText: 'Confirm rotation',
-            targets: _this2.props.targets,
-            shifts: _this2.props.shifts,
+            targets: _this.props.targets,
+            shifts: _this.props.shifts,
             displayPad: true
         };
-        return _this2;
+        return _this;
     }
 
     _createClass(PlayerPanel, [{
@@ -30843,7 +30806,7 @@ var PlayerPanel = function (_React$Component2) {
                 _react2.default.createElement(
                     'div',
                     { className: 'player-pad ' + (this.state.displayPad ? '' : 'hidden') },
-                    _react2.default.createElement(HideButton, { isActive: !this.state.displayPad, callTogglePad: this.togglePad }),
+                    _react2.default.createElement(_HideButton.HideButton, { isActive: !this.state.displayPad, callTogglePad: this.togglePad }),
                     _react2.default.createElement(
                         'div',
                         { className: 'pad-body clearfix' },
@@ -30918,11 +30881,11 @@ exports.InfoTable = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(8);
+var _reactDom = __webpack_require__(7);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -31024,15 +30987,84 @@ exports.InfoTable = InfoTable;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.HideButton = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(7);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var HideButton = function (_React$Component) {
+    _inherits(HideButton, _React$Component);
+
+    function HideButton(props) {
+        _classCallCheck(this, HideButton);
+
+        var _this = _possibleConstructorReturn(this, (HideButton.__proto__ || Object.getPrototypeOf(HideButton)).call(this, props));
+
+        _this.state = {
+            isActive: _this.props.isActive
+        };
+        return _this;
+    }
+
+    _createClass(HideButton, [{
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(nextProps) {
+            if (this.state.isActive !== nextProps.isActive) {
+                this.setState({
+                    isActive: nextProps.isActive
+                });
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'span',
+                { className: 'hide-button ' + (this.props.isActive ? 'active' : ''), onClick: this.props.callTogglePad },
+                this.props.isActive ? 'Show pad' : 'Hide pad'
+            );
+        }
+    }]);
+
+    return HideButton;
+}(_react2.default.Component);
+
+exports.HideButton = HideButton;
+
+/***/ }),
+/* 255 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 exports.GameOver = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(8);
+var _reactDom = __webpack_require__(7);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -31149,7 +31181,7 @@ var GameOver = function (_React$Component) {
 exports.GameOver = GameOver;
 
 /***/ }),
-/* 255 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31162,11 +31194,11 @@ exports.MainMenu = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(8);
+var _reactDom = __webpack_require__(7);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -31332,7 +31364,7 @@ var MainMenu = function (_React$Component) {
 exports.MainMenu = MainMenu;
 
 /***/ }),
-/* 256 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31345,11 +31377,11 @@ exports.NotFound = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(8);
+var _reactDom = __webpack_require__(7);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -31428,13 +31460,13 @@ var NotFound = function (_React$Component) {
 exports.NotFound = NotFound;
 
 /***/ }),
-/* 257 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(258);
+var content = __webpack_require__(259);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -31442,7 +31474,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(260)(content, options);
+var update = __webpack_require__(261)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -31459,21 +31491,21 @@ if(false) {
 }
 
 /***/ }),
-/* 258 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(259)(undefined);
+exports = module.exports = __webpack_require__(260)(undefined);
 // imports
 
 
 // module
-exports.push([module.i, "* {\n  box-sizing: border-box; }\n\n.col-1-3 {\n  float: left;\n  width: 33%;\n  min-height: 1px; }\n\n.clearfix:after {\n  content: \"\";\n  display: table;\n  clear: both; }\n\n.visuallyhidden {\n  display: none;\n  border: 0;\n  clip: rect(0 0 0 0);\n  -webkit-clip-path: inset(50%);\n  clip-path: inset(50%);\n  height: 1px;\n  margin: -1px;\n  overflow: hidden;\n  padding: 0;\n  position: absolute;\n  width: 1px;\n  white-space: nowrap; }\n\n.treasure {\n  margin: 10px;\n  width: 40px;\n  height: 40px;\n  background-size: cover; }\n\n.container {\n  width: 100%;\n  max-width: 1280px;\n  margin: 0 auto; }\n\nbody {\n  font-family: 'Press Start 2P', sans-serif;\n  margin: 0; }\n\n.game-tile {\n  float: left;\n  border: 1px solid #000;\n  width: 180px;\n  height: 180px;\n  box-sizing: content-box; }\n  .game-tile .game-grid {\n    float: left;\n    height: 60px;\n    width: 60px; }\n    .game-tile .game-grid h4 {\n      padding-left: 20px;\n      padding-top: 10px; }\n    .game-tile .game-grid.brick {\n      background-image: url(\"./images/world.png\");\n      background-position: 99.7% 50.2%; }\n    .game-tile .game-grid.way {\n      background-image: url(\"./images/dirt1.png\");\n      background-size: cover; }\n    .game-tile .game-grid .player {\n      display: block;\n      margin-top: 5px;\n      margin-left: 10px;\n      height: 50px;\n      width: 25px; }\n\n.page-header {\n  background-color: #823F17;\n  min-height: 60px; }\n  .page-header .title {\n    display: flex;\n    justify-content: center;\n    align-items: center; }\n  .page-header h1 {\n    font-size: 3.5rem; }\n\n.section-main-menu {\n  background-color: #AA6339;\n  height: calc(100vh - 131px); }\n  .section-main-menu .main-menu-header {\n    position: relative;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding-top: 120px;\n    padding-bottom: 90px; }\n  .section-main-menu .main-menu-nav {\n    display: flex;\n    align-items: center;\n    justify-content: center; }\n    .section-main-menu .main-menu-nav ul {\n      list-style-type: none; }\n      .section-main-menu .main-menu-nav ul li {\n        padding-bottom: 20px;\n        text-align: center; }\n        .section-main-menu .main-menu-nav ul li a {\n          color: #000;\n          text-decoration: none; }\n        .section-main-menu .main-menu-nav ul li.active {\n          position: relative; }\n          .section-main-menu .main-menu-nav ul li.active::before {\n            content: '';\n            display: block;\n            position: absolute;\n            width: 40px;\n            height: 40px;\n            left: -25%;\n            top: -30%;\n            background-image: url(\"./images/mushroom.png\");\n            background-size: cover; }\n          .section-main-menu .main-menu-nav ul li.active::after {\n            content: '';\n            display: block;\n            position: absolute;\n            width: 40px;\n            height: 40px;\n            right: -25%;\n            top: -30%;\n            background-image: url(\"./images/mushroom.png\");\n            background-size: cover; }\n          .section-main-menu .main-menu-nav ul li.active a {\n            text-decoration: underline; }\n  .section-main-menu .main-menu-footer {\n    background-color: #823F17;\n    width: 100%;\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    padding: 10px;\n    text-align: center; }\n    .section-main-menu .main-menu-footer small {\n      font-size: 0.8rem; }\n    .section-main-menu .main-menu-footer a {\n      color: #000; }\n\n.section-not-found {\n  background-color: #AA6339;\n  height: calc(100vh - 131px); }\n  .section-not-found .not-found-header {\n    position: relative;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    padding-top: 120px;\n    padding-bottom: 90px; }\n    .section-not-found .not-found-header h2 {\n      font-size: 6rem; }\n    .section-not-found .not-found-header a {\n      color: #000; }\n  .section-not-found .not-found-footer {\n    background-color: #823F17;\n    width: 100%;\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    padding: 10px;\n    text-align: center; }\n    .section-not-found .not-found-footer small {\n      font-size: 0.8rem; }\n    .section-not-found .not-found-footer a {\n      color: #000; }\n\n.section-game {\n  background-color: #AA6339; }\n  .section-game .game-over {\n    background-color: rgba(0, 0, 0, 0.8);\n    position: fixed;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    left: 0;\n    bottom: 0;\n    width: 100vw;\n    height: 100vh;\n    z-index: 4; }\n    .section-game .game-over .box {\n      width: 100vw;\n      background-color: #000;\n      color: #efefef;\n      height: 245px; }\n    .section-game .game-over h2 {\n      width: 100%;\n      text-align: center;\n      font-size: 50px; }\n    .section-game .game-over p {\n      text-align: center; }\n    .section-game .game-over a {\n      color: #efefef;\n      text-decoration: none; }\n  .section-game .player {\n    position: absolute;\n    z-index: 1;\n    background-size: 140%;\n    background-position-y: bottom;\n    background-position-x: -8px;\n    background-repeat: no-repeat; }\n  .section-game .game-panel {\n    padding-top: 210px;\n    height: 1700px;\n    width: 1275px; }\n  .section-game .row {\n    position: relative; }\n    .section-game .row .right-arrow {\n      position: absolute;\n      top: 90px;\n      right: 100%;\n      font-size: 3rem;\n      color: #28450f;\n      transform: translate(-50%, -50%); }\n    .section-game .row .left-arrow {\n      position: absolute;\n      top: 90px;\n      left: 101.2%;\n      font-size: 3rem;\n      color: #28450f;\n      transform: translatey(-50%); }\n    .section-game .row .down-arrow {\n      position: absolute;\n      top: -40%;\n      font-size: 3rem;\n      color: #28450f;\n      transform: translateX(-50%); }\n      .section-game .row .down-arrow.col-2 {\n        left: 272px; }\n      .section-game .row .down-arrow.col-4 {\n        left: calc(272px + 180px * 2); }\n      .section-game .row .down-arrow.col-6 {\n        left: calc(272px + 180px * 4); }\n    .section-game .row .up-arrow {\n      position: absolute;\n      bottom: -40%;\n      font-size: 3rem;\n      color: #28450f;\n      transform: translateX(-50%); }\n      .section-game .row .up-arrow.col-2 {\n        left: 272px; }\n      .section-game .row .up-arrow.col-4 {\n        left: calc(272px + 180px * 2); }\n      .section-game .row .up-arrow.col-6 {\n        left: calc(272px + 180px * 4); }\n  .section-game .game-tile {\n    float: left;\n    border: 1px solid #000;\n    width: 180px;\n    height: 180px;\n    box-sizing: content-box; }\n    .section-game .game-tile .game-grid {\n      float: left;\n      height: 60px;\n      width: 60px; }\n      .section-game .game-tile .game-grid h4 {\n        padding-left: 20px;\n        padding-top: 10px; }\n      .section-game .game-tile .game-grid.brick {\n        background-image: url(\"./images/world.png\");\n        background-position: 99.7% 50.2%; }\n      .section-game .game-tile .game-grid.way {\n        background-image: url(\"./images/dirt1.png\");\n        background-size: cover; }\n  .section-game .player-panel {\n    background-color: #AA6339;\n    margin-bottom: 200px;\n    margin-top: 250px; }\n    .section-game .player-panel .hide-button {\n      position: relative;\n      margin-left: 20px;\n      cursor: pointer; }\n      .section-game .player-panel .hide-button:before {\n        content: '';\n        display: block;\n        width: 0;\n        height: 0;\n        border: 10px solid transparent;\n        border-top-color: #000;\n        position: absolute;\n        left: -15px;\n        top: 0;\n        transform: translate(-50%, 0); }\n      .section-game .player-panel .hide-button.active::before {\n        content: '';\n        display: block;\n        width: 0;\n        height: 0;\n        border: 10px solid transparent;\n        border-bottom-color: #000;\n        position: absolute;\n        left: -15px;\n        top: 0;\n        transform: translate(-50%, 0); }\n    .section-game .player-panel .player-pad {\n      width: 1140px;\n      height: 370px;\n      background-color: #d4d4d4;\n      padding: 10px 35px;\n      position: fixed;\n      bottom: 0;\n      z-index: 2;\n      transform: translateX(5.8%);\n      transition: height 0.2s linear; }\n      .section-game .player-panel .player-pad.hidden {\n        height: 35px; }\n      .section-game .player-panel .player-pad .copyright-info {\n        padding-top: 5px;\n        text-align: center; }\n        .section-game .player-panel .player-pad .copyright-info small {\n          font-size: 8px;\n          color: #5d5d5d; }\n        .section-game .player-panel .player-pad .copyright-info a {\n          color: inherit; }\n    .section-game .player-panel .pad-body {\n      background-color: #1a1a1a;\n      height: 90%;\n      margin-top: 10px;\n      padding: 30px; }\n      .section-game .player-panel .pad-body p {\n        margin-left: 120px;\n        padding-top: 0;\n        margin-top: 0;\n        color: #efefef; }\n    .section-game .player-panel .rotator {\n      margin-bottom: 20px; }\n      .section-game .player-panel .rotator .rotate-button {\n        width: 60px;\n        height: 60px;\n        background-color: #000;\n        box-shadow: 3px 2px 1px 1px rgba(177, 178, 177, 0.85); }\n    .section-game .player-panel .btn {\n      color: #ee201a;\n      margin-top: 15px;\n      margin-left: 35px; }\n      .section-game .player-panel .btn span {\n        display: inline-block;\n        border-radius: 50%;\n        background-color: #ee201a;\n        box-shadow: 3px 3px 1px 0px rgba(219, 32, 26, 0.75);\n        width: 20px;\n        height: 20px; }\n    .section-game .player-panel .pad-info-table .info-cell {\n      margin-left: 35px;\n      margin-top: 20px;\n      color: #efefef; }\n      .section-game .player-panel .pad-info-table .info-cell:first-child {\n        margin-top: 0; }\n    .section-game .player-panel .pad-info-table .target {\n      display: inline-block;\n      height: 100px;\n      min-width: 90px;\n      text-align: center;\n      background-color: #813f17;\n      margin-top: 25px;\n      padding-top: 40px; }\n", ""]);
+exports.push([module.i, "* {\n  box-sizing: border-box; }\n\n.col-1-3 {\n  float: left;\n  width: 33%;\n  min-height: 1px; }\n\n.clearfix:after {\n  content: \"\";\n  display: table;\n  clear: both; }\n\n.visuallyhidden {\n  display: none;\n  border: 0;\n  clip: rect(0 0 0 0);\n  -webkit-clip-path: inset(50%);\n  clip-path: inset(50%);\n  height: 1px;\n  margin: -1px;\n  overflow: hidden;\n  padding: 0;\n  position: absolute;\n  width: 1px;\n  white-space: nowrap; }\n\n.treasure {\n  margin: 10px;\n  width: 40px;\n  height: 40px;\n  background-size: cover; }\n\n.container {\n  width: 100%;\n  max-width: 1280px;\n  margin: 0 auto; }\n\nbody {\n  font-family: 'Press Start 2P', sans-serif;\n  margin: 0; }\n\n.game-tile {\n  float: left;\n  border: 1px solid #000;\n  width: 180px;\n  height: 180px;\n  box-sizing: content-box; }\n  .game-tile .game-grid {\n    float: left;\n    height: 60px;\n    width: 60px; }\n    .game-tile .game-grid h4 {\n      padding-left: 20px;\n      padding-top: 10px; }\n    .game-tile .game-grid.brick {\n      background-image: url(\"./images/world.png\");\n      background-position: 99.7% 50.2%; }\n    .game-tile .game-grid.way {\n      background-image: url(\"./images/dirt1.png\");\n      background-size: cover; }\n    .game-tile .game-grid .player {\n      display: block;\n      margin-top: 5px;\n      margin-left: 10px;\n      height: 50px;\n      width: 25px; }\n\n.page-header {\n  background-color: #823F17;\n  min-height: 60px; }\n  .page-header .title {\n    display: flex;\n    justify-content: center;\n    align-items: center; }\n  .page-header h1 {\n    font-size: 3.5rem; }\n\n.section-main-menu {\n  background-color: #AA6339;\n  height: calc(100vh - 131px); }\n  .section-main-menu .main-menu-header {\n    position: relative;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding-top: 120px;\n    padding-bottom: 90px; }\n  .section-main-menu .main-menu-nav {\n    display: flex;\n    align-items: center;\n    justify-content: center; }\n    .section-main-menu .main-menu-nav ul {\n      list-style-type: none; }\n      .section-main-menu .main-menu-nav ul li {\n        padding-bottom: 20px;\n        text-align: center; }\n        .section-main-menu .main-menu-nav ul li a {\n          color: #000;\n          text-decoration: none; }\n        .section-main-menu .main-menu-nav ul li.active {\n          position: relative; }\n          .section-main-menu .main-menu-nav ul li.active::before {\n            content: '';\n            display: block;\n            position: absolute;\n            width: 40px;\n            height: 40px;\n            left: -25%;\n            top: -30%;\n            background-image: url(\"./images/mushroom.png\");\n            background-size: cover; }\n          .section-main-menu .main-menu-nav ul li.active::after {\n            content: '';\n            display: block;\n            position: absolute;\n            width: 40px;\n            height: 40px;\n            right: -25%;\n            top: -30%;\n            background-image: url(\"./images/mushroom.png\");\n            background-size: cover; }\n          .section-main-menu .main-menu-nav ul li.active a {\n            text-decoration: underline; }\n  .section-main-menu .main-menu-footer {\n    background-color: #823F17;\n    width: 100%;\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    padding: 10px;\n    text-align: center; }\n    .section-main-menu .main-menu-footer small {\n      font-size: 0.8rem; }\n    .section-main-menu .main-menu-footer a {\n      color: #000; }\n\n.section-not-found {\n  background-color: #AA6339;\n  height: calc(100vh - 131px); }\n  .section-not-found .not-found-header {\n    position: relative;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    padding-top: 120px;\n    padding-bottom: 90px; }\n    .section-not-found .not-found-header h2 {\n      font-size: 6rem; }\n    .section-not-found .not-found-header a {\n      color: #000; }\n  .section-not-found .not-found-footer {\n    background-color: #823F17;\n    width: 100%;\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    padding: 10px;\n    text-align: center; }\n    .section-not-found .not-found-footer small {\n      font-size: 0.8rem; }\n    .section-not-found .not-found-footer a {\n      color: #000; }\n\n.section-game {\n  background-color: #AA6339; }\n  .section-game .game-over {\n    background-color: rgba(0, 0, 0, 0.8);\n    position: fixed;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    left: 0;\n    bottom: 0;\n    width: 100vw;\n    height: 100vh;\n    z-index: 4; }\n    .section-game .game-over .box {\n      width: 100vw;\n      background-color: #000;\n      color: #efefef;\n      height: 245px; }\n    .section-game .game-over h2 {\n      width: 100%;\n      text-align: center;\n      font-size: 50px; }\n    .section-game .game-over p {\n      text-align: center; }\n    .section-game .game-over a {\n      color: #efefef;\n      text-decoration: none; }\n  .section-game .player {\n    position: absolute;\n    z-index: 1;\n    background-size: 140%;\n    background-position-y: bottom;\n    background-position-x: -8px;\n    background-repeat: no-repeat; }\n  .section-game .game-panel {\n    padding-top: 210px;\n    height: 1700px;\n    width: 1275px; }\n  .section-game .row {\n    position: relative; }\n    .section-game .row .right-arrow {\n      position: absolute;\n      top: 90px;\n      right: 100%;\n      font-size: 3rem;\n      color: #28450f;\n      transform: translate(-50%, -50%); }\n    .section-game .row .left-arrow {\n      position: absolute;\n      top: 90px;\n      left: 101.2%;\n      font-size: 3rem;\n      color: #28450f;\n      transform: translatey(-50%); }\n    .section-game .row .down-arrow {\n      position: absolute;\n      top: -40%;\n      font-size: 3rem;\n      color: #28450f;\n      transform: translateX(-50%); }\n      .section-game .row .down-arrow.col-2 {\n        left: 272px; }\n      .section-game .row .down-arrow.col-4 {\n        left: calc(272px + 180px * 2); }\n      .section-game .row .down-arrow.col-6 {\n        left: calc(272px + 180px * 4); }\n    .section-game .row .up-arrow {\n      position: absolute;\n      bottom: -40%;\n      font-size: 3rem;\n      color: #28450f;\n      transform: translateX(-50%); }\n      .section-game .row .up-arrow.col-2 {\n        left: 272px; }\n      .section-game .row .up-arrow.col-4 {\n        left: calc(272px + 180px * 2); }\n      .section-game .row .up-arrow.col-6 {\n        left: calc(272px + 180px * 4); }\n  .section-game .game-tile {\n    float: left;\n    border: 1px solid #000;\n    width: 180px;\n    height: 180px;\n    box-sizing: content-box; }\n    .section-game .game-tile .game-grid {\n      float: left;\n      height: 60px;\n      width: 60px; }\n      .section-game .game-tile .game-grid h4 {\n        padding-left: 20px;\n        padding-top: 10px; }\n      .section-game .game-tile .game-grid.brick {\n        background-image: url(\"./images/world.png\");\n        background-position: 99.7% 50.2%; }\n      .section-game .game-tile .game-grid.way {\n        background-image: url(\"./images/dirt1.png\");\n        background-size: cover; }\n  .section-game .player-panel {\n    background-color: #AA6339;\n    margin-bottom: 200px;\n    margin-top: 250px; }\n    .section-game .player-panel .hide-button {\n      position: relative;\n      margin-left: 20px;\n      cursor: pointer; }\n      .section-game .player-panel .hide-button:before {\n        content: '';\n        display: block;\n        width: 0;\n        height: 0;\n        border: 10px solid transparent;\n        border-top-color: #000;\n        position: absolute;\n        left: -15px;\n        top: 0;\n        transform: translate(-50%, 0); }\n      .section-game .player-panel .hide-button.active::before {\n        content: '';\n        display: block;\n        width: 0;\n        height: 0;\n        border: 10px solid transparent;\n        border-bottom-color: #000;\n        position: absolute;\n        left: -15px;\n        top: 0;\n        transform: translate(-50%, 0); }\n    .section-game .player-panel .player-pad {\n      width: 1140px;\n      height: 370px;\n      background-color: #d4d4d4;\n      padding: 10px 35px;\n      position: fixed;\n      bottom: 0;\n      z-index: 2;\n      transform: translateX(5.8%);\n      transition: height 0.2s linear; }\n      .section-game .player-panel .player-pad.hidden {\n        height: 35px; }\n      .section-game .player-panel .player-pad .copyright-info {\n        text-align: center; }\n        .section-game .player-panel .player-pad .copyright-info small {\n          font-size: 8px;\n          color: #5d5d5d; }\n        .section-game .player-panel .player-pad .copyright-info a {\n          color: inherit; }\n    .section-game .player-panel .pad-body {\n      background-color: #1a1a1a;\n      height: 90%;\n      margin-top: 10px;\n      padding: 30px; }\n      .section-game .player-panel .pad-body p {\n        margin-left: 120px;\n        padding-top: 0;\n        margin-top: 0;\n        color: #efefef; }\n    .section-game .player-panel .rotator {\n      margin-bottom: 20px; }\n      .section-game .player-panel .rotator .rotate-button {\n        width: 60px;\n        height: 60px;\n        background-color: #000;\n        box-shadow: 3px 2px 1px 1px rgba(177, 178, 177, 0.85); }\n    .section-game .player-panel .btn {\n      color: #ee201a;\n      margin-top: 15px;\n      margin-left: 35px; }\n      .section-game .player-panel .btn span {\n        display: inline-block;\n        border-radius: 50%;\n        background-color: #ee201a;\n        box-shadow: 3px 3px 1px 0px rgba(219, 32, 26, 0.75);\n        width: 20px;\n        height: 20px; }\n    .section-game .player-panel .pad-info-table .info-cell {\n      margin-left: 35px;\n      margin-top: 20px;\n      color: #efefef; }\n      .section-game .player-panel .pad-info-table .info-cell:first-child {\n        margin-top: 0; }\n    .section-game .player-panel .pad-info-table .target {\n      display: inline-block;\n      height: 100px;\n      min-width: 90px;\n      text-align: center;\n      background-color: #813f17;\n      margin-top: 25px;\n      padding-top: 40px; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 259 */
+/* 260 */
 /***/ (function(module, exports) {
 
 /*
@@ -31555,7 +31587,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 260 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -31611,7 +31643,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(261);
+var	fixUrls = __webpack_require__(262);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -31927,7 +31959,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 261 */
+/* 262 */
 /***/ (function(module, exports) {
 
 
